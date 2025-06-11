@@ -18,6 +18,12 @@ export class CarouselComponent {
       description: 'Realce o seu olhar com fios naturais e volume perfeito.',
       whatsMessage: 'Olá! Gostaria de agendar uma extensão de cílios.'
     },
+    {
+      image: 'assets/smile.jpg',
+      title: 'Piercing no Dente',
+      description: 'Brilho no sorriso com aplicação segura e estilosa.',
+      whatsMessage: 'Olá! Tenho interesse em colocar piercing no dente.'
+    }
   ];
 
   currentIndex = 0;
