@@ -48,18 +48,38 @@
   }
 
   .menu {
+    display: flex;
+    align-items: center;
+
     @media (max-width: 768px) {
       display: none;
-      position: absolute;
-      top: 90px; // aumente este valor para abaixar o menu e não cobrir a logo
+      position: fixed; // <-- troque de absolute para fixed
+      top: 90px; // ajuste conforme a altura do seu header
       left: 0;
-      width: 100%;
+      width: 100vw;
+      height: calc(100vh - 90px); // ocupa o restante da tela
       background: #fff0f5;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       z-index: 1050;
+      overflow-y: auto;
+      flex-direction: column;
+      align-items: flex-start;
 
       &.active {
         display: block;
+      }
+
+      ul {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        padding: 1rem 0;
+      }
+
+      li {
+        width: 100%;
+        text-align: left;
+        padding-left: 2rem;
       }
     }
 
@@ -96,12 +116,12 @@
           cursor: pointer;
 
           .dropdown-menu {
+            display: none;
             position: absolute;
             top: 100%;
             left: 0;
             background: #fff;
             padding: 0.5rem 1rem;
-            display: none;
             flex-direction: column;
             border-radius: 0.5rem;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
