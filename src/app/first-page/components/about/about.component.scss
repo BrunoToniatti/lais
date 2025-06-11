@@ -1,7 +1,7 @@
 .about-section {
   padding: 4rem 0;
   background: linear-gradient(90deg, #fff0f5 60%, #ffe6f0 100%);
-  overflow: visible;
+  overflow: hidden;
 
   .about-content {
     display: flex;
@@ -47,6 +47,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     img {
       width: 100%;
