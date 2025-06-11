@@ -1,0 +1,28 @@
+<header class="navbar">
+  <div class="container">
+    <div class="logo">
+      <h1>Lais Silva</h1>
+      <span>lash designer</span>
+    </div>
+
+    <div class="hamburger" (click)="toggleMenu()">☰</div>
+
+    <nav class="menu" [class.active]="menuAtivo">
+      <ul>
+        <li class="dropdown" (click)="toggleSubmenu($event)">
+          <a href="#">Serviços</a>
+          <ul class="dropdown-menu"
+              [class.active]="submenuAtivo"
+              *ngIf="submenuAtivo || isDesktop">
+            <li><a href="#">Extensão de Cílios</a></li>
+            <li><a href="#">Manutenção</a></li>
+            <li><a href="#">Remoção</a></li>
+          </ul>
+        </li>
+        <li><a href="#" (click)="scrollToSection($event, 'sobre-mim')">Sobre Mim</a></li>
+        <li><a href="#">Feedbacks</a></li>
+        <li><a href="#">Contatos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

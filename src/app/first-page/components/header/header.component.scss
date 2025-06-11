@@ -1,0 +1,145 @@
+.navbar {
+  background: #ffe6f0;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #cc2e73;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    span {
+      display: block;
+      font-size: 0.9rem;
+      color: #8e005f;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+
+  .hamburger {
+    font-size: 2rem;
+    color: #cc2e73;
+    cursor: pointer;
+    display: none;
+    background: none;
+    border: none;
+    z-index: 1100;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .menu {
+    @media (max-width: 768px) {
+      display: none;
+      position: absolute;
+      top: 90px; // aumente este valor para abaixar o menu e não cobrir a logo
+      left: 0;
+      width: 100%;
+      background: #fff0f5;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1050;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+
+      li {
+        position: relative;
+
+        a {
+          text-decoration: none;
+          color: #cc2e73;
+          font-weight: 500;
+          transition: color 0.3s;
+          font-family: 'Poppins', sans-serif;
+
+          &:hover {
+            color: #ff66a3;
+          }
+        }
+
+        &.dropdown {
+          cursor: pointer;
+
+          .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            padding: 0.5rem 1rem;
+            display: none;
+            flex-direction: column;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            min-width: 180px;
+            z-index: 1200;
+
+            li {
+              padding: 0.5rem 0;
+
+              a {
+                color: #8e005f;
+
+                &:hover {
+                  color: #cc2e73;
+                }
+              }
+            }
+          }
+
+          &:hover .dropdown-menu {
+            display: flex;
+          }
+
+          @media (max-width: 768px) {
+            .dropdown-menu {
+              position: static;
+              box-shadow: none;
+              background: transparent;
+              padding: 0;
+              display: none;
+
+              &.active {
+                display: flex !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

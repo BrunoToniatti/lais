@@ -1,0 +1,100 @@
+.price-section {
+  background: linear-gradient(90deg, #fff0f5 60%, #ffe6f0 100%);
+  padding: 4rem 2rem 3rem 2rem;
+  text-align: center;
+
+  h2 {
+    font-size: 2.3rem;
+    color: #c2185b;
+    margin-bottom: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(204, 46, 115, 0.07);
+  }
+
+  .price-category {
+    margin-bottom: 3rem;
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 24px rgba(204, 46, 115, 0.07);
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 12px 32px rgba(204, 46, 115, 0.13);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #e91e63;
+      margin-bottom: 1.2rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        background: linear-gradient(90deg, #ffe4ec 80%, #fff0f5 100%);
+        margin-bottom: 0.8rem;
+        padding: 1rem 1.5rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.13rem;
+        color: #444;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(204, 46, 115, 0.04);
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+          transform: scale(1.025);
+          box-shadow: 0 6px 18px rgba(204, 46, 115, 0.10);
+          background: linear-gradient(90deg, #ffd6e6 80%, #fff0f5 100%);
+        }
+
+        span {
+          text-align: left;
+          font-family: 'Poppins', sans-serif;
+        }
+
+        strong {
+          color: #c2185b;
+          font-weight: bold;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.13rem;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    padding: 2.5rem 0.5rem 1.5rem 0.5rem;
+
+    .price-category {
+      padding: 1.2rem 0.7rem 1rem 0.7rem;
+      border-radius: 1rem;
+
+      h3 {
+        font-size: 1.15rem;
+      }
+
+      ul li {
+        font-size: 1rem;
+        padding: 0.8rem 0.7rem;
+      }
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+}
