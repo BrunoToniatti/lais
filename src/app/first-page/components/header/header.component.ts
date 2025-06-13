@@ -18,6 +18,12 @@ export class HeaderComponent {
   submenuAtivo = false;
   isDesktop = true;
 
+  agende(){
+    if (typeof window !== 'undefined') {
+      window.location.href = '/calendar';
+    }
+  }
+
   // Método para redirecionar para a página inicial
   home() {
     if (typeof window !== 'undefined') {
