@@ -53,11 +53,11 @@
 
     @media (max-width: 768px) {
       display: none;
-      position: fixed; // <-- troque de absolute para fixed
-      top: 90px; // ajuste conforme a altura do seu header
+      position: fixed;
+      top: 90px;
       left: 0;
       width: 100vw;
-      height: calc(100vh - 90px); // ocupa o restante da tela
+      height: calc(100vh - 90px);
       background: #fff0f5;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       z-index: 1050;
@@ -125,11 +125,13 @@
             flex-direction: column;
             border-radius: 0.5rem;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-            min-width: 180px;
+            // min-width: 180px;
             z-index: 1200;
 
+
             li {
-              padding: 0.5rem 0;
+              // padding: 0.5rem 0;
+
 
               a {
                 color: #8e005f;
