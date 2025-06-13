@@ -128,10 +128,45 @@
             // min-width: 180px;
             z-index: 1200;
 
+            .dropdown-category {
+              padding: 0.5rem 0;
+              border-bottom: 1px solid #ffe6f0;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              .category-title {
+                display: block;
+                font-weight: 600;
+                color: #c2185b;
+                margin-bottom: 0.3rem;
+                font-size: 1.05rem;
+                padding-left: 0.2rem;
+                font-family: 'Poppins', sans-serif;
+              }
+
+              ul {
+                padding-left: 0.7rem;
+                margin: 0;
+                list-style: none;
+
+                li a {
+                  color: #8e005f;
+                  font-size: 0.98rem;
+                  padding: 0.2rem 0;
+                  display: block;
+                  text-decoration: none;
+
+                  &:hover {
+                    color: #e91e63;
+                  }
+                }
+              }
+            }
 
             li {
               // padding: 0.5rem 0;
-
 
               a {
                 color: #8e005f;

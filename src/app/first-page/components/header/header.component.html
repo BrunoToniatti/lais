@@ -5,30 +5,40 @@
       <span>lash designer</span>
     </div>
 
-    <!-- <div class="hamburger" (click)="toggleMenu()">☰</div>
+    <div class="hamburger" (click)="toggleMenu()">☰</div>
 
     <nav class="menu" [class.active]="menuAtivo">
       <ul>
+        <li><a href="#" (click)="scrollToSection($event, 'sobre-mim')">Sobre Mim</a></li>
         <li
           class="dropdown"
           (click)="!isDesktop && toggleSubmenu($event)"
           [class.open]="submenuAtivo && !isDesktop"
         >
           <a href="#">Serviços</a>
-          <ul
-            class="dropdown-menu"
-            [class.active]="submenuAtivo || isDesktop"
-          >
-            <li><a href="#">Extensão de Cílios</a></li>
-            <li><a href="#">Manutenção</a></li>
-            <li><a href="#">Remoção</a></li>
+          <ul class="dropdown-menu" [class.active]="submenuAtivo || isDesktop">
+            <li class="dropdown-category">
+              <span class="category-title">Cílios</span>
+              <ul>
+                <li><a href="#" (click)="scrollToSection($event, 'aplication-c')">Aplicação</a></li>
+                <li><a href="#" (click)="scrollToSection($event, 'manutencion')">Manutenção</a></li>
+                <li><a href="#" (click)="scrollToSection($event, 'remove')">Remoção</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-category">
+              <span class="category-title">Piercing Dental</span>
+              <ul>
+                <li><a href="#" (click)="scrollToSection($event, 'aplication-d')">Aplicação</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
-        <li><a href="#" (click)="scrollToSection($event, 'sobre-mim')">Sobre Mim</a></li>
-        <li><a href="#">Feedbacks</a></li>
-        <li><a href="#">Contatos</a></li>
+
+        <li><a href="#" (click)="scrollToSection($event, 'price-table')">Tabela de Preços</a></li>
+        <!-- <li><a href="#">Feedbacks</a></li> -->
+        <!-- <li><a href="#">Contatos</a></li> -->
       </ul>
     </nav>
-  </div> -->
   </div>
+
 </header>

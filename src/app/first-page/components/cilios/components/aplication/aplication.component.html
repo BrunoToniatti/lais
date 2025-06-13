@@ -1,0 +1,15 @@
+<section class="aplicacao-section" id="aplication-c">
+  <h2>Aplicações de Cílios ✨</h2>
+  <p class="subtext">Escolha o estilo que mais combina com você</p>
+
+  <div class="aplicacao-grid">
+    <div class="aplicacao-card" *ngFor="let tipo of aplicacoes">
+      <img [src]="tipo.img" [alt]="tipo.nome" />
+      <h3>{{ tipo.nome }}</h3>
+      <p class="valor">R$ 120,00</p>
+      <a class="agendar-btn" [href]="getWhatsappLink(tipo.nome)" target="_blank">
+        Agendar
+      </a>
+    </div>
+  </div>
+</section>

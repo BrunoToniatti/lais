@@ -1,0 +1,135 @@
+.aplicacao-section {
+  padding: 4rem 2rem;
+  background: #fff0f5;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    color: #c2185b;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtext {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .aplicacao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .aplicacao-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: #c2185b;
+      margin: 1rem 0 0.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .valor {
+      font-weight: bold;
+      color: #e91e63;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .agendar-btn {
+      display: inline-block;
+      margin-bottom: 1rem;
+      background-color: #ffe4ec;
+      color: #c2185b;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      border: 1.5px solid #e91e63;
+      transition: background 0.3s, color 0.3s, border 0.3s;
+
+      &:hover {
+        background-color: #e91e63;
+        color: #fff;
+        border: 1.5px solid #e91e63;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    padding: 2.5rem 0.5rem;
+    .aplicacao-grid {
+      gap: 1.2rem;
+    }
+    .aplicacao-card img {
+      height: 170px;
+    }
+    h2 {
+      font-size: 1.7rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 1.5rem 0.2rem;
+    .aplicacao-grid {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+    .aplicacao-card {
+      max-width: 250px;
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 0.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      img {
+        height: 150px;
+        border-top-left-radius: 0.8rem;
+        border-top-right-radius: 0.8rem;
+      }
+      h3 {
+        font-size: 1rem;
+        margin: 0.7rem 0 0.3rem;
+      }
+      .valor {
+        font-size: 0.97rem;
+        margin-bottom: 0.7rem;
+      }
+      .agendar-btn {
+        font-size: 0.97rem;
+        padding: 0.4rem 1rem;
+        margin-bottom: 0.7rem;
+      }
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    .subtext {
+      font-size: 0.97rem;
+    }
+  }
+}
