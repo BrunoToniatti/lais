@@ -7,9 +7,7 @@
       <img [src]="tipo.img" [alt]="tipo.nome" />
       <h3>{{ tipo.nome }}</h3>
       <p class="valor">R$ 120,00</p>
-      <a class="agendar-btn" (click)="agendar()" target="_blank">
-        Agendar
-      </a>
+      <app-aplication-button [btnProcedure]="tipo.nome" [btnStyle]="'agendarBtn'" [btnText]="'Agendar'"></app-aplication-button>
     </div>
   </div>
 </section>

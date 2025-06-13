@@ -102,7 +102,7 @@
 
 .procedure-select {
   width: 100%;
-  max-width: 260px;
+  max-width: 420px;
   margin: 0 auto 1.2rem auto;
   background: linear-gradient(120deg, #fff0f5 60%, #ffe6f0 100%);
   border-radius: 1.5rem;
@@ -125,6 +125,7 @@
 .procedure-select select {
   width: 100%;
   max-width: 100%;
+  min-height: 3.2rem;
   padding: 0.7rem 2.5rem 0.7rem 1.2rem;
   border-radius: 1.2rem;
   border: 1.5px solid #e91e63;
@@ -144,6 +145,8 @@
   outline: none;
   margin: 0;
   cursor: pointer;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .procedure-select select:focus {
@@ -160,6 +163,8 @@
   border-radius: 0.7rem;
   padding: 0.7rem 1.2rem;
   transition: background 0.2s, color 0.2s;
+  white-space: normal;
+  min-height: 2.2rem;
 }
 
 .procedure-select option:checked,
@@ -173,8 +178,24 @@
   color: #c2185b;
 }
 
+/* Scrollbar custom para o select aberto (Webkit) */
+.procedure-select select {
+  scrollbar-width: thin;
+  scrollbar-color: #e91e63 #fff0f5;
+}
+.procedure-select select::-webkit-scrollbar {
+  width: 8px;
+  background: #fff0f5;
+  border-radius: 1.2rem;
+}
+.procedure-select select::-webkit-scrollbar-thumb {
+  background: #e91e63;
+  border-radius: 1.2rem;
+}
+
 @media (max-width: 700px) {
   .calendar-container {
+    margin-top: -10px;
     max-width: 98vw;
     padding: 1.2rem 0.2rem 1rem 0.2rem;
   }
@@ -210,9 +231,142 @@
     border-radius: 0.7rem;
     background-position: right 0.7rem center;
     background-size: 1rem;
+    min-height: 2.5rem;
   }
   .procedure-select option {
     font-size: 0.97rem;
     padding: 0.5rem 0.7rem;
+    min-height: 1.7rem;
   }
 }
+.procedure-menu {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 1.2rem auto;
+  background: linear-gradient(120deg, #fff0f5 60%, #ffe6f0 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(204, 46, 115, 0.10);
+  padding: 1.1rem 1.2rem 0.7rem 1.2rem;
+
+  .procedure-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.08rem;
+    color: #c2185b;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .procedure-scroll {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .procedure-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    width: max-content;
+  }
+
+  .procedure-list button {
+    background: #ffe4ec;
+    border: 1.5px solid #e91e63;
+    color: #c2185b;
+    border-radius: 2rem;
+    padding: 0.45rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: #e91e63;
+      color: #fff;
+    }
+
+    &.active {
+      background: #e91e63;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .procedure-menu {
+    max-width: 98vw;
+    padding: 0.8rem 0.6rem;
+
+    .procedure-list {
+      gap: 0.4rem;
+    }
+
+    .procedure-list button {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.9rem;
+    }
+  }
+}
+.procedure-wrapper {
+  max-width: 420px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1.2rem 1rem 1rem 1rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(120deg, #fff0f5 60%, #ffe6f0 100%);
+  box-shadow: 0 4px 24px rgba(204, 46, 115, 0.10);
+  text-align: center;
+
+  .procedure-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.08rem;
+    color: #c2185b;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .procedure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.7rem;
+    justify-content: center;
+  }
+
+  .procedure-grid button {
+    background: #ffe4ec;
+    border: 1.5px solid #e91e63;
+    color: #c2185b;
+    border-radius: 0.9rem;
+    padding: 0.6rem 0.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    white-space: nowrap;
+    width: 130px;
+
+    &:hover {
+      background: #e91e63;
+      color: #fff;
+    }
+
+    &.active {
+      background: #e91e63;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .procedure-wrapper {
+    max-width: 98vw;
+    padding: 0.9rem 0.6rem 0.6rem 0.6rem;
+
+    .procedure-grid button {
+      font-size: 12px;
+      padding: 0.5rem 0.4rem;
+    }
+  }
+}
+

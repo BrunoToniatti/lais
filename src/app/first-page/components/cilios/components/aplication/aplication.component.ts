@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AplicationButtonComponent } from "../aplication-button/aplication-button.component";
 
 @Component({
   selector: 'app-aplication',
   standalone: true,
   imports: [
     CommonModule,
-  ],
+    AplicationButtonComponent
+],
   templateUrl: './aplication.component.html',
   styleUrl: './aplication.component.scss'
 })
@@ -23,14 +25,10 @@ export class AplicationComponent {
     { nome: 'Estilo Fio a Fio', img: 'assets/cilios/fioafio.png' }
   ];
 
-  agendar() {
-     this.router.navigate(['/calendar']);
-  }
-  whatsappNumber = '5511961006415'; // insere o número da Lais aqui (com DDD, sem +)
-
-  getWhatsappLink(estilo: string): string {
-    const msg = `Olá! Gostaria de agendar um cílios estilo ${estilo}.`;
-    return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+  agendar(tipo: string) {
+    this.router.navigate(['/calendar'], {
+      queryParams: { procedimento: tipo }
+    });
   }
 
 }

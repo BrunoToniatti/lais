@@ -2,12 +2,13 @@
 
 <div class="calendar-container">
 
-  <div class="procedure-select">
-    <label for="procedure">Escolha o procedimento:</label>
-    <select id="procedure" [(ngModel)]="procedure">
-      <option value="" disabled selected>Selecione...</option>
-      <option *ngFor="let p of procedures" [value]="p">{{ p }}</option>
-    </select>
+  <div class="procedure-wrapper">
+    <p class="procedure-title">Escolha o procedimento:</p>
+    <div class="procedure-grid">
+      <button *ngFor="let p of procedures" [class.active]="procedure === p" (click)="procedure = p">
+        {{ p }}
+      </button>
+    </div>
   </div>
 
   <div *ngIf="procedure" class="calendar-section">
@@ -23,13 +24,8 @@
       </div>
 
       <ng-container *ngFor="let week of weeks">
-        <div
-          class="day-cell"
-          *ngFor="let date of week"
-          [class.empty]="!date"
-          [class.disabled]="date && isPast(date)"
-          (click)="date && !isPast(date) && selectDate(date)"
-        >
+        <div class="day-cell" *ngFor="let date of week" [class.empty]="!date" [class.disabled]="date && isPast(date)"
+          (click)="date && !isPast(date) && selectDate(date)">
           {{ date?.getDate() }}
         </div>
       </ng-container>

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { AplicationButtonComponent } from '../aplication-button/aplication-button.component';
 
 @Component({
   selector: 'app-remove',
   standalone: true,
-  imports: [],
+  imports: [
+    AplicationButtonComponent
+  ],
   templateUrl: './remove.component.html',
   styleUrl: './remove.component.scss'
 })

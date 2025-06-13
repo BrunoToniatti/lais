@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { AplicationButtonComponent } from '../aplication-button/aplication-button.component';
 
 @Component({
   selector: 'app-manutencion',
   standalone: true,
-  imports: [],
+  imports: [
+    AplicationButtonComponent
+  ],
   templateUrl: './manutencion.component.html',
   styleUrl: './manutencion.component.scss'
 })

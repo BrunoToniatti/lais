@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from "../first-page/components/header/header.component";
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     HeaderComponent,
     FormsModule
-],
+  ],
   templateUrl: './calendar-page.component.html',
   styleUrl: './calendar-page.component.scss'
 })
@@ -20,10 +20,28 @@ export class CalendarPageComponent {
   currentDate = new Date();
   weeks: (Date | null)[][] = [];
   procedure: string = '';
-  procedures = ['Cílios fio a fio', 'Piercing', 'Limpeza de pele'];
+  procedures = [
+    'Cílios fio a fio',
+    'Piercing',
+    'Limpeza de pele',
+    'Volume Brasileiro',
+    'Volume Inglês',
+    'Volume Glamour',
+    'Volume Wispy',
+    'Estilo Fox Eyes',
+    'Estilo Fio a Fio',
+    'Manutenção',
+    'Remoção',
+    'Piercing dental',
+  ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.generateCalendar();
+
+    const fromQuery = this.route.snapshot.queryParamMap.get('procedimento');
+    if (fromQuery && this.procedures.includes(fromQuery)) {
+      this.procedure = fromQuery;
+    }
   }
 
   get currentMonth(): string {
