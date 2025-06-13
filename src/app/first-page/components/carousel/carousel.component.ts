@@ -16,13 +16,13 @@ export class CarouselComponent {
       image: 'assets/cilios.jpg',
       title: 'Extensão de Cílios',
       description: 'Realce o seu olhar com fios naturais e volume perfeito.',
-      whatsMessage: 'Olá! Gostaria de agendar uma extensão de cílios.'
+      type: 'aplication-c'
     },
     {
       image: 'assets/smile.jpg',
       title: 'Piercing no Dente',
       description: 'Brilho no sorriso com aplicação segura e estilosa.',
-      whatsMessage: 'Olá! Tenho interesse em colocar piercing no dente.'
+      type: 'aplication-d'
     }
   ];
 
@@ -42,9 +42,11 @@ export class CarouselComponent {
       this.currentIndex === this.items.length - 1 ? 0 : this.currentIndex + 1;
   }
 
-  abrirWhatsApp(mensagem: string) {
-    const numero = '5511961006415'; // Exemplo: 5599999999999
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank');
+  scrollToSection(event: Event, sectionId: string) {
+    event.preventDefault();
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

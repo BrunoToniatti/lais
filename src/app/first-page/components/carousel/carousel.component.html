@@ -8,7 +8,7 @@
       <div class="carousel-content">
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
-        <button (click)="abrirWhatsApp(item.whatsMessage)">Agendar</button>
+        <button (click)="scrollToSection($event, item.type)">Saiba Mais</button>
       </div>
     </div>
   </div>
