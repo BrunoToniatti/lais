@@ -56,6 +56,9 @@
       transition: background 0.3s, color 0.3s, border 0.3s;
       margin-bottom: 1.2rem;
       margin-right: 0;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
 
       &:hover {
         background-color: #e91e63;
@@ -80,6 +83,8 @@
       transition: background 0.3s, color 0.3s, border 0.3s, box-shadow 0.3s;
       margin-left: 0;
       width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
       text-align: center;
 
       &:hover {
@@ -135,9 +140,11 @@
     .piercing-texto .agendar-btn,
     .piercing-texto .download-btn {
       width: 100%;
+      min-width: 0;
       margin-left: 0;
       margin-right: 0;
       display: block;
+      box-sizing: border-box;
     }
   }
 
@@ -160,9 +167,24 @@
     .piercing-texto .valor {
       font-size: 1rem;
     }
+    .piercing-texto .agendar-btn,
+    .piercing-texto .download-btn {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      font-size: 1rem;
+      padding: 0.7rem 0.5rem;
+      box-sizing: border-box;
+      border-radius: 0.7rem;
+      margin-left: 0;
+      margin-right: 0;
+      display: block;
+    }
     .piercing-texto .agendar-btn {
-      font-size: 0.97rem;
-      padding: 0.5rem 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .piercing-texto .download-btn {
+      margin-top: 0;
     }
   }
 }
