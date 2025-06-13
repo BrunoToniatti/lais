@@ -9,8 +9,35 @@
 
 .carousel-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  height: 100%;
+  transition: transform 0.7s ease-in-out;
+}
+
+.carousel-indicators {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  z-index: 3;
+
+  span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.6;
+    border: 2px solid #e91e63;
+    transition: background 0.2s, opacity 0.2s;
+    cursor: pointer;
+    display: inline-block;
+
+    &.active {
+      background: #e91e63;
+      opacity: 1;
+    }
+  }
 }
 
 .carousel-slide {
@@ -84,17 +111,15 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 2.5rem;
-  background: rgba(255,255,255,0.7);
+  background: none;
   border: none;
-  color: #c2185b;
+  color: #fff;
   cursor: pointer;
   z-index: 2;
   padding: 0.2rem 1rem;
-  border-radius: 50%;
 
   &:hover {
     color: #e91e63;
-    background: #fff;
   }
 }
 
@@ -117,6 +142,15 @@
       p { font-size: 1rem; }
     }
   }
+
+  .carousel-indicators {
+    bottom: 10px;
+    gap: 0.5rem;
+  }
+  .carousel-indicators span {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -130,4 +164,28 @@
       button { font-size: 0.95rem; }
     }
   }
+
+  .prev, .next {
+    display: none;
+  }
+
+  .carousel-indicators {
+    bottom: 6px;
+    gap: 0.3rem;
+  }
+  .carousel-indicators span {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.carousel-subtitle {
+  font-size: 1.18rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  color: #fff;
+  margin: 1rem 0 0.5rem 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
