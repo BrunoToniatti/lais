@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +11,19 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  @Input() where: string = '';
+
   menuAtivo = false;
   submenuAtivo = false;
   isDesktop = true;
+
+  // Método para redirecionar para a página inicial
+  home() {
+    if (typeof window !== 'undefined') {
+      window.location.href = '/';
+    }
+  }
 
   toggleMenu() {
     this.menuAtivo = !this.menuAtivo;

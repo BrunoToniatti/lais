@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aplication',
@@ -11,6 +12,8 @@ import { Component } from '@angular/core';
   styleUrl: './aplication.component.scss'
 })
 export class AplicationComponent {
+  constructor(private router: Router) { }
+
   aplicacoes = [
     { nome: 'Volume Brasileiro', img: 'assets/cilios/brasileiro.png' },
     { nome: 'Volume Inglês', img: 'assets/cilios/ingles.jpg' },
@@ -19,6 +22,10 @@ export class AplicationComponent {
     { nome: 'Estilo Fox Eyes', img: 'assets/cilios/fox.png' },
     { nome: 'Estilo Fio a Fio', img: 'assets/cilios/fioafio.png' }
   ];
+
+  agendar() {
+     this.router.navigate(['/calendar']);
+  }
   whatsappNumber = '5511961006415'; // insere o número da Lais aqui (com DDD, sem +)
 
   getWhatsappLink(estilo: string): string {

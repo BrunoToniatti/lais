@@ -72,6 +72,7 @@
       font-family: 'Poppins', sans-serif;
       border: 1.5px solid #e91e63;
       transition: background 0.3s, color 0.3s, border 0.3s;
+      cursor: pointer;
 
       &:hover {
         background-color: #e91e63;
@@ -83,12 +84,15 @@
 
   @media (max-width: 900px) {
     padding: 2.5rem 0.5rem;
+
     .aplicacao-grid {
       gap: 1.2rem;
     }
+
     .aplicacao-card img {
       height: 170px;
     }
+
     h2 {
       font-size: 1.7rem;
     }
@@ -96,38 +100,46 @@
 
   @media (max-width: 600px) {
     padding: 1.5rem 0.2rem;
+
     .aplicacao-grid {
       grid-template-columns: 1fr;
       gap: 0.7rem;
     }
+
     .aplicacao-card {
       max-width: 250px;
       width: 100%;
       margin: 0 auto;
       border-radius: 0.8rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+
       img {
         height: 150px;
         border-top-left-radius: 0.8rem;
         border-top-right-radius: 0.8rem;
       }
+
       h3 {
         font-size: 1rem;
         margin: 0.7rem 0 0.3rem;
       }
+
       .valor {
         font-size: 0.97rem;
         margin-bottom: 0.7rem;
       }
+
       .agendar-btn {
         font-size: 0.97rem;
         padding: 0.4rem 1rem;
         margin-bottom: 0.7rem;
       }
     }
+
     h2 {
       font-size: 1.2rem;
     }
+
     .subtext {
       font-size: 0.97rem;
     }
