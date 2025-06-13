@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './aplication.component.scss'
 })
 export class AplicationComponent {
-whatsappLink = 'https://wa.me/55XXXXXXXXXXX?text=' +
-    encodeURIComponent('Olá! Gostaria de agendar uma aplicação de piercing no dente.');
+whatsappLink = 'https://wa.me/5511961006415?text=' +
+    encodeURIComponent('Olá! Gostaria de agendar uma aplicação de piercing dental.');
 }

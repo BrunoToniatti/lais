@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './manutencion.component.scss'
 })
 export class ManutencionComponent {
-  whatsappLink = 'https://wa.me/55XXXXXXXXXXX?text=' +
+  whatsappLink = 'https://wa.me/5511961006415?text=' +
     encodeURIComponent('Olá! Gostaria de agendar uma manutenção de cílios.');
 }
