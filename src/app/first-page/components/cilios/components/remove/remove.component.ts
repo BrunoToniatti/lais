@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './remove.component.scss'
 })
 export class RemoveComponent {
-
+  whatsappLink = 'https://wa.me/55XXXXXXXXXXX?text=' +
+  encodeURIComponent('Olá! Gostaria de agendar uma remoção de cílios.');
 }
