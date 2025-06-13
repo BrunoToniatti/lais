@@ -4,6 +4,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { AboutComponent } from "./components/about/about.component";
 import { PriceTableComponent } from "./components/price-table/price-table.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { CiliosComponent } from "./components/cilios/cilios.component";
 
 
 @Component({
@@ -14,7 +15,8 @@ import { FooterComponent } from "./components/footer/footer.component";
     CarouselComponent,
     AboutComponent,
     PriceTableComponent,
-    FooterComponent
+    FooterComponent,
+    CiliosComponent
 ],
   templateUrl: './first-page.component.html',
   styleUrl: './first-page.component.scss'
