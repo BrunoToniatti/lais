@@ -1,27 +1,38 @@
 <app-header></app-header>
+
 <div class="calendar-container">
-  <div class="calendar-header">
-    <button (click)="prevMonth()">◀</button>
-    <h2>{{ currentMonth | titlecase }}</h2>
-    <button (click)="nextMonth()">▶</button>
+
+  <div class="procedure-select">
+    <label for="procedure">Escolha o procedimento:</label>
+    <select id="procedure" [(ngModel)]="procedure">
+      <option value="" disabled selected>Selecione...</option>
+      <option *ngFor="let p of procedures" [value]="p">{{ p }}</option>
+    </select>
   </div>
 
-  <div class="calendar-grid">
-    <div class="weekday" *ngFor="let day of ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']">
-      {{ day }}
+  <div *ngIf="procedure" class="calendar-section">
+    <div class="calendar-header">
+      <button (click)="prevMonth()">◀</button>
+      <h2>{{ currentMonth | titlecase }}</h2>
+      <button (click)="nextMonth()">▶</button>
     </div>
 
-    <ng-container *ngFor="let week of weeks">
-      <div
-        class="day-cell"
-        *ngFor="let date of week"
-        [class.empty]="!date"
-        [class.disabled]="date && isPast(date)"
-        (click)="date && !isPast(date) && selectDate(date)"
-      >
-        {{ date?.getDate() }}
+    <div class="calendar-grid">
+      <div class="weekday" *ngFor="let day of ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']">
+        {{ day }}
       </div>
-    </ng-container>
+
+      <ng-container *ngFor="let week of weeks">
+        <div
+          class="day-cell"
+          *ngFor="let date of week"
+          [class.empty]="!date"
+          [class.disabled]="date && isPast(date)"
+          (click)="date && !isPast(date) && selectDate(date)"
+        >
+          {{ date?.getDate() }}
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>
-

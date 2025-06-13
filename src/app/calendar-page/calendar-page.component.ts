@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderComponent } from "../first-page/components/header/header.component";
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -9,14 +10,17 @@ import { HeaderComponent } from "../first-page/components/header/header.componen
   standalone: true,
   imports: [
     CommonModule,
-    HeaderComponent
+    HeaderComponent,
+    FormsModule
 ],
   templateUrl: './calendar-page.component.html',
   styleUrl: './calendar-page.component.scss'
 })
 export class CalendarPageComponent {
-   currentDate = new Date();
+  currentDate = new Date();
   weeks: (Date | null)[][] = [];
+  procedure: string = '';
+  procedures = ['Cílios fio a fio', 'Piercing', 'Limpeza de pele'];
 
   constructor(private router: Router) {
     this.generateCalendar();
@@ -45,12 +49,10 @@ export class CalendarPageComponent {
     this.weeks = [];
     let currentWeek: (Date | null)[] = [];
 
-    // Preencher dias antes do primeiro dia do mês
     for (let i = 0; i < startDay; i++) {
       currentWeek.push(null);
     }
 
-    // Preencher dias do mês
     for (let d = 1; d <= lastDay.getDate(); d++) {
       const date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), d);
       currentWeek.push(date);
@@ -76,7 +78,9 @@ export class CalendarPageComponent {
   selectDate(date: Date) {
     if (!this.isPast(date)) {
       const formatted = date.toISOString().split('T')[0];
-      this.router.navigate(['/agendar', formatted]);
+      this.router.navigate(['/agendar', formatted], {
+        queryParams: { procedimento: this.procedure }
+      });
     }
   }
 }

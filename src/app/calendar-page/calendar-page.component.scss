@@ -100,6 +100,79 @@
   }
 }
 
+.procedure-select {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto 1.2rem auto;
+  background: linear-gradient(120deg, #fff0f5 60%, #ffe6f0 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(204, 46, 115, 0.10);
+  padding: 1.1rem 1.2rem 0.7rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.procedure-select label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.08rem;
+  color: #c2185b;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  margin-left: 0.2rem;
+}
+
+.procedure-select select {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.7rem 2.5rem 0.7rem 1.2rem;
+  border-radius: 1.2rem;
+  border: 1.5px solid #e91e63;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.08rem;
+  background: linear-gradient(90deg, #ffe4ec 60%, #fff0f5 100%);
+  color: #c2185b;
+  box-shadow: 0 2px 8px rgba(204, 46, 115, 0.08);
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23e91e63" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.2rem;
+  outline: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+.procedure-select select:focus {
+  border: 2px solid #c2185b;
+  box-shadow: 0 4px 18px 0 rgba(204, 46, 115, 0.18);
+  background: linear-gradient(90deg, #fff0f5 60%, #ffe4ec 100%);
+}
+
+.procedure-select option {
+  background: #fff0f5;
+  color: #c2185b;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.procedure-select option:checked,
+.procedure-select option:focus {
+  background: #ffe4ec;
+  color: #e91e63;
+}
+
+.procedure-select option:hover {
+  background: #f8d7da;
+  color: #c2185b;
+}
+
 @media (max-width: 700px) {
   .calendar-container {
     max-width: 98vw;
@@ -126,5 +199,20 @@
     font-size: 0.97rem;
     border-radius: 0.7rem;
     padding: 0;
+  }
+  .procedure-select {
+    max-width: 98vw;
+    padding: 0.7rem 0.5rem 0.5rem 0.5rem;
+  }
+  .procedure-select select {
+    font-size: 0.97rem;
+    padding: 0.5rem 2.1rem 0.5rem 0.7rem;
+    border-radius: 0.7rem;
+    background-position: right 0.7rem center;
+    background-size: 1rem;
+  }
+  .procedure-select option {
+    font-size: 0.97rem;
+    padding: 0.5rem 0.7rem;
   }
 }
