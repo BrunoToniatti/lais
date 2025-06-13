@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="appointment-container">
+  <h2>Escolha um horário para o dia {{ formatDateBR(date) }}</h2>
+
+  <div class="time-list">
+    <button
+      *ngFor="let time of times"
+      (click)="selectTime(time)"
+      class="time-button"
+      [class.selected]="time === selectedTime"
+    >
+      {{ time }}
+    </button>
+  </div>
+
+  <div *ngIf="selectedTime" class="form-section">
+    <h3>Preencha seus dados</h3>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input formControlName="name" placeholder="Seu nome" />
+      <input formControlName="email" placeholder="Seu e-mail" type="email" />
+      <input formControlName="phone" placeholder="Seu telefone" />
+
+      <button type="submit" [disabled]="form.invalid">Confirmar Agendamento</button>
+    </form>
+  </div>
+</div>
