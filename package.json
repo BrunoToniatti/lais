@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "echo Postbuild completo",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:lais": "node dist/lais/server/server.mjs"
