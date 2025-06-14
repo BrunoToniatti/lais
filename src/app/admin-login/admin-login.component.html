@@ -1,0 +1,25 @@
+<div class="login-container">
+  <h2>Login Administrativo</h2>
+
+  <form (ngSubmit)="fazerLogin()" #loginForm="ngForm">
+    <input
+      type="text"
+      name="usuario"
+      [(ngModel)]="usuario"
+      placeholder="Usuário"
+      required
+    />
+
+    <input
+      type="password"
+      name="senha"
+      [(ngModel)]="senha"
+      placeholder="Senha"
+      required
+    />
+
+    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+
+    <div *ngIf="erroLogin" class="alert-erro">{{ erroLogin }}</div>
+  </form>
+</div>
