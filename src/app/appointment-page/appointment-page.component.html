@@ -1,26 +1,80 @@
 <app-header></app-header>
-<div class="appointment-container">
-  <h2>Escolha um horário para o dia {{ formatDateBR(date) }}</h2>
 
-  <div class="time-list">
+<div class="container">
+  <h2>Agendamento para {{ procedure }}</h2>
+  <div class="data-destaque">Data: {{ dataFormatadaBR }}</div>
+
+  <div *ngIf="sucesso" class="sucesso-msg">
+    Agendamento confirmado com sucesso!
+  </div>
+<br>
+  <h3>Escolha o horário:</h3>
+  <div class="horarios">
     <button
-      *ngFor="let time of times"
-      (click)="selectTime(time)"
-      class="time-button"
-      [class.selected]="time === selectedTime"
+      *ngFor="let hora of horariosDisponiveis"
+      (click)="selectTime(hora)"
+      [class.selected]="hora === selectedTime"
+      class="btn-horario"
     >
-      {{ time }}
+      {{ hora }}
     </button>
   </div>
 
-  <div *ngIf="selectedTime" class="form-section">
-    <h3>Preencha seus dados</h3>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <input formControlName="name" placeholder="Seu nome" />
-      <input formControlName="email" placeholder="Seu e-mail" type="email" />
-      <input formControlName="phone" placeholder="Seu telefone" />
+  <form [formGroup]="form" (ngSubmit)="submit()" class="formulario">
+    <label>
+      Nome:
+      <input type="text" formControlName="client_name" />
+    </label>
 
-      <button type="submit" [disabled]="form.invalid">Confirmar Agendamento</button>
-    </form>
-  </div>
+    <label>
+      E-mail:
+      <input type="email" formControlName="client_email" />
+    </label>
+
+    <label>
+      Telefone:
+      <input type="tel" formControlName="client_phone" />
+    </label>
+
+    <button type="submit" [disabled]="!form.valid || !selectedTime">
+      Confirmar Agendamento
+    </button>
+  </form>
 </div>
+
+<div *ngIf="loading" class="spinner-overlay">
+  <div class="spinner"></div>
+</div>
+
+<style>
+  .spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>

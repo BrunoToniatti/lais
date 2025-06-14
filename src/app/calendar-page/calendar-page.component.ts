@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from "../first-page/components/header/header.component";
 import { FormsModule } from '@angular/forms';
-
+import { AgendamentoService } from '../services/agendamento.service';
 
 @Component({
   selector: 'app-calendar-page',
@@ -11,12 +11,15 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HeaderComponent,
-    FormsModule
+    FormsModule,
+
   ],
   templateUrl: './calendar-page.component.html',
   styleUrl: './calendar-page.component.scss'
 })
 export class CalendarPageComponent {
+  diasComDisponibilidade: string[] = []; // formato YYYY-MM-DD
+
   currentDate = new Date();
   weeks: (Date | null)[][] = [];
   procedure: string = '';
@@ -35,13 +38,40 @@ export class CalendarPageComponent {
     'Piercing dental',
   ];
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private agendamentoService: AgendamentoService) {
     this.generateCalendar();
-
     const fromQuery = this.route.snapshot.queryParamMap.get('procedimento');
     if (fromQuery && this.procedures.includes(fromQuery)) {
       this.procedure = fromQuery;
+      this.carregarDiasDisponiveis();
     }
+  }
+  diasComHorario: string[] = [];
+
+  carregarDiasDisponiveis() {
+    const ano = this.currentDate.getFullYear();
+    const mes = this.currentDate.getMonth() + 1;
+    this.agendamentoService.getDiasDisponiveis(ano, mes, this.procedure).subscribe({
+      next: (dias) => {
+        this.diasComHorario = dias;
+        this.generateCalendar(); // força recálculo após obter os dias
+      },
+      error: (err) => {
+        console.error('Erro ao carregar dias disponíveis:', err);
+      }
+    });
+  }
+
+  temHorarioDisponivel(date: Date | null): boolean {
+    if (!date) return false;
+    const dataStr = date.toISOString().split('T')[0];
+    return this.diasComDisponibilidade.includes(dataStr);
+  }
+
+
+  selecionarProcedimento(p: string) {
+    this.procedure = p;
+    this.carregarDiasDisponiveis();
   }
 
   get currentMonth(): string {
@@ -58,11 +88,17 @@ export class CalendarPageComponent {
     this.generateCalendar();
   }
 
+  isDisponivel(date: Date): boolean {
+    const dia = date.toISOString().split('T')[0]; // formato: 'YYYY-MM-DD'
+    return this.diasComHorario.includes(dia);
+  }
+
   generateCalendar() {
     const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
     const lastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0);
     const startDay = firstDay.getDay();
     const today = new Date();
+
 
     this.weeks = [];
     let currentWeek: (Date | null)[] = [];
