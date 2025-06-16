@@ -1,34 +1,38 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, Input } from '@angular/core';
+import { Router } from '@angular/router'; // 👈 IMPORTANTE!
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
   @Input() where: string = '';
 
   menuAtivo = false;
   submenuAtivo = false;
   isDesktop = true;
 
-  agende(){
-    if (typeof window !== 'undefined') {
-      window.location.href = '/calendar';
-    }
+  constructor(private router: Router) {} // 👈 INJETA O ROUTER
+
+  agende() {
+    this.router.navigate(['/calendar']);
   }
 
-  // Método para redirecionar para a página inicial
+  logout() {
+    // Aqui você limpa login futuro se tiver auth
+    this.router.navigate(['/admin']);
+  }
+
+  navegar(caminho: string) {
+    this.router.navigate(['/admin', caminho]);
+  }
+
   home() {
-    if (typeof window !== 'undefined') {
-      window.location.href = '/';
-    }
+    this.router.navigate(['/']);
   }
 
   toggleMenu() {
@@ -40,7 +44,7 @@ export class HeaderComponent {
 
   toggleSubmenu(event: Event) {
     if (!this.isDesktop) {
-      event.stopPropagation(); // Impede conflito com clique geral
+      event.stopPropagation();
       this.submenuAtivo = !this.submenuAtivo;
     }
   }
@@ -66,7 +70,7 @@ export class HeaderComponent {
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
-      this.menuAtivo = false; // Fecha o menu no mobile
+      this.menuAtivo = false;
       this.submenuAtivo = false;
     }
   }

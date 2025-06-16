@@ -16,7 +16,7 @@ export interface Agendamento {
   providedIn: 'root'
 })
 export class AgendamentoService {
-  private apiUrl = 'https://lais-backend.onrender.com/api/agendamentos/';
+  private apiUrl = 'http://31.97.168.107:8000/api/agendamentos/';
 
   constructor(private http: HttpClient) { }
 

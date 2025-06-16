@@ -1,1 +1,29 @@
-<p>admin-painel works!</p>
+<app-header [where]="'admin-painel'"></app-header>
+
+<div class="painel-container">
+  <h1>Bom dia, Lais! ☀️</h1>
+  <p class="sub">Que seu dia seja leve e produtivo 💖</p>
+
+  <div class="info-cards">
+    <div class="card destaque">
+      <h2>📅 Próximos Agendamentos</h2>
+      <p>{{ agendamentosHoje.length > 0 ? 'Você tem ' + agendamentosHoje.length + ' atendimentos hoje!' : 'Nenhum agendamento por enquanto 😊' }}</p>
+      <button *ngIf="agendamentosHoje.length" (click)="irPara('agendamentos')">Ver Lista</button>
+    </div>
+
+    <div class="card">
+      <h2>📈 Relatório Rápido</h2>
+      <ul>
+        <li>Total este mês: <strong>{{ totalMes | currency:'BRL' }}</strong></li>
+        <li>Clientes atendidas: <strong>{{ totalClientes }}</strong></li>
+        <li>Procedimento mais realizado: <strong>{{ maisPopular }}</strong></li>
+      </ul>
+      <button (click)="irPara('relatorios')">Detalhar</button>
+    </div>
+
+    <div class="card motivacional">
+      <h2>💬 Mensagem do Dia</h2>
+      <p>"A beleza começa no momento em que você decide ser você mesma." – Coco Chanel</p>
+    </div>
+  </div>
+</div>
