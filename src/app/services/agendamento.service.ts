@@ -16,7 +16,8 @@ export interface Agendamento {
   providedIn: 'root'
 })
 export class AgendamentoService {
-  private apiUrl = 'http://31.97.168.107:8000/api/agendamentos/';
+  private apiUrl = 'http://api.laisbarretoribeiro.com//api/agendamentos/';
+  // private apiUrl = 'http://localhost:8000/api/agendamentos/';
 
   constructor(private http: HttpClient) { }
 
