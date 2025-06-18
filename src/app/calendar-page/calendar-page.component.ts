@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from "../first-page/components/header/header.component";
 import { FormsModule } from '@angular/forms';
 import { AgendamentoService } from '../services/agendamento.service';
+import { ServiceService } from '../services/service.service';
 
 @Component({
   selector: 'app-calendar-page',
@@ -23,29 +24,34 @@ export class CalendarPageComponent {
   currentDate = new Date();
   weeks: (Date | null)[][] = [];
   procedure: string = '';
-  procedures = [
-    'Cílios fio a fio',
-    'Piercing',
-    'Limpeza de pele',
-    'Volume Brasileiro',
-    'Volume Inglês',
-    'Volume Glamour',
-    'Volume Wispy',
-    'Estilo Fox Eyes',
-    'Estilo Fio a Fio',
-    'Manutenção',
-    'Remoção',
-    'Piercing dental',
-  ];
+  procedures: string[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private agendamentoService: AgendamentoService) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private agendamentoService: AgendamentoService,
+    private serviceService: ServiceService
+  ) {
     this.generateCalendar();
-    const fromQuery = this.route.snapshot.queryParamMap.get('procedimento');
-    if (fromQuery && this.procedures.includes(fromQuery)) {
-      this.procedure = fromQuery;
-      this.carregarDiasDisponiveis();
-    }
+    this.carregarProcedimentos();
   }
+  carregarProcedimentos() {
+  this.serviceService.getAll().subscribe({
+    next: (res) => {
+      // Ajuste conforme a estrutura que o backend retornar:
+      this.procedures = res.map((s: any) => s.name);
+
+      const fromQuery = this.route.snapshot.queryParamMap.get('procedimento');
+      if (fromQuery && this.procedures.includes(fromQuery)) {
+        this.procedure = fromQuery;
+        this.carregarDiasDisponiveis();
+      }
+    },
+    error: (err) => {
+      console.error('Erro ao carregar procedimentos:', err);
+    }
+  });
+}
   diasComHorario: string[] = [];
 
   carregarDiasDisponiveis() {
