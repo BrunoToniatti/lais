@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -21,23 +21,33 @@ export class AgendamentoService {
 
   constructor(private http: HttpClient) { }
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = '3c07f0049dac3c17c16cc4fae40cf5b1d431522c';
+    return new HttpHeaders({
+      Authorization: `Token ${token}`
+    });
+  }
+
   // exemplo de função
   criarAgendamento(agendamento: Agendamento): Observable<any> {
-    return this.http.post(`${this.apiUrl}agendamentos/`, agendamento);
+    return this.http.post(`${this.apiUrl}agendamentos/`, agendamento, { headers: this.getAuthHeaders() });
   }
 
   getDiasDisponiveis(ano: number, mes: number, procedimento: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}dias-disponiveis/?ano=${ano}&mes=${mes}&procedimento=${procedimento}`);
+    return this.http.get<string[]>(`${this.apiUrl}dias-disponiveis/?ano=${ano}&mes=${mes}&procedimento=${procedimento}`, { headers: this.getAuthHeaders() });
   }
 
   getAgendamentosPorData(data: string): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.apiUrl}agendamentos/?date=${data}`);
+    return this.http.get<Agendamento[]>(`${this.apiUrl}agendamentos/?date=${data}`, { headers: this.getAuthHeaders() });
   }
 
   getHorariosDisponiveis(data: string, procedimento: string) {
-  const params = new HttpParams()
-    .set('data', data)
-    .set('procedimento', procedimento);
-  return this.http.get<any>(`${this.apiUrl}horarios-disponiveis/`, { params });
-}
+    const params = new HttpParams()
+      .set('data', data)
+      .set('procedimento', procedimento);
+    return this.http.get<any>(`${this.apiUrl}horarios-disponiveis/`, {
+      params,
+      headers: this.getAuthHeaders()
+    });
+  }
 }
