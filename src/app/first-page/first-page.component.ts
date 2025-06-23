@@ -6,6 +6,7 @@ import { PriceTableComponent } from "./components/price-table/price-table.compon
 import { FooterComponent } from "./components/footer/footer.component";
 import { CiliosComponent } from "./components/cilios/cilios.component";
 import { DentalComponent } from "./components/dental/dental.component";
+import { PromotionComponent } from "./components/promotion/promotion.component";
 
 
 @Component({
@@ -18,7 +19,8 @@ import { DentalComponent } from "./components/dental/dental.component";
     PriceTableComponent,
     FooterComponent,
     CiliosComponent,
-    DentalComponent
+    DentalComponent,
+    PromotionComponent
 ],
   templateUrl: './first-page.component.html',
   styleUrl: './first-page.component.scss'
