@@ -13,13 +13,11 @@ export class CarouselComponent implements OnInit, OnDestroy {
     {
       image: 'assets/cilios.jpg',
       title: 'Extensão de Cílios',
-      description: 'Realce o seu olhar com fios naturais e volume perfeito.',
       type: 'aplication-c'
     },
     {
       image: 'assets/smile.jpg',
       title: 'Piercing no Dente',
-      description: 'Brilho no sorriso com aplicação segura e estilosa.',
       type: 'aplication-d'
     }
   ];
