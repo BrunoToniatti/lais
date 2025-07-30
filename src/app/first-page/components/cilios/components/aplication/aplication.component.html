@@ -6,7 +6,7 @@
     <div class="aplicacao-card" *ngFor="let tipo of aplicacoes">
       <img [src]="tipo.img" [alt]="tipo.nome" />
       <h3>{{ tipo.nome }}</h3>
-      <p class="valor">R$ 120,00</p>
+      <p class="valor">R$ 10,00</p>
       <app-aplication-button [btnProcedure]="tipo.nome" [btnStyle]="'agendarBtn'" [btnText]="'Agendar'"></app-aplication-button>
     </div>
   </div>
