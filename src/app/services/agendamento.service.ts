@@ -16,13 +16,13 @@ export interface Agendamento {
   providedIn: 'root'
 })
 export class AgendamentoService {
-  private apiUrl = 'https://api.laisbarretoribeiro.com/api/agendamentos/';
+  private apiUrl = 'http://31.97.168.107:8001/api/agendamentos/';
   // private apiUrl = 'http://localhost:8000/api/agendamentos/';
 
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders(): HttpHeaders {
-    const token = '3c07f0049dac3c17c16cc4fae40cf5b1d431522c';
+    const token = '1759a5c6ea101b459351248ce3c2ae406f7e9ab9';
     return new HttpHeaders({
       Authorization: `Token ${token}`
     });

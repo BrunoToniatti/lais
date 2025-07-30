@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = 'https://api.laisbarretoribeiro.com/api/servicos/';
+  private apiUrl = 'http://31.97.168.107:8001/api/servicos/';
   // private apiUrl = 'http://localhost:8000/api/servicos/';
 
   constructor(private http: HttpClient) { }
 
   private getAuthHeaders(): HttpHeaders {
-    const token = '3c07f0049dac3c17c16cc4fae40cf5b1d431522c'; // 🔁 Substitua aqui pelo token da Lais
+    const token = '1759a5c6ea101b459351248ce3c2ae406f7e9ab9'; // 🔁 Substitua aqui pelo token da Lais
     return new HttpHeaders({
       Authorization: `Token ${token}`
     });
