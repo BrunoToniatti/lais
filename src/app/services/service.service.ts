@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = 'http://31.97.168.107:8001/api/servicos/';
+  private apiUrl = 'https://apihomologa.laisbarretoribeiro.com/api/servicos/';
   // private apiUrl = 'http://localhost:8000/api/servicos/';
 
   constructor(private http: HttpClient) { }
