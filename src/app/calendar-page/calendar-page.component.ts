@@ -60,7 +60,7 @@ export class CalendarPageComponent {
     this.agendamentoService.getDiasDisponiveis(ano, mes, this.procedure).subscribe({
       next: (dias) => {
         this.diasComHorario = dias;
-        this.generateCalendar(); // força recálculo após obter os dias
+        this.generateCalendar();
       },
       error: (err) => {
         console.error('Erro ao carregar dias disponíveis:', err);
@@ -94,8 +94,18 @@ export class CalendarPageComponent {
     this.generateCalendar();
   }
 
+  isToday(date: Date): boolean {
+  const today = new Date();
+  return (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
+  );
+}
+
   isDisponivel(date: Date): boolean {
-    const dia = date.toISOString().split('T')[0]; // formato: 'YYYY-MM-DD'
+    if (this.isToday(date)) return false;
+    const dia = date.toISOString().split('T')[0];
     return this.diasComHorario.includes(dia);
   }
 

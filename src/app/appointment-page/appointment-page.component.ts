@@ -25,6 +25,7 @@ export class AppointmentPageComponent {
   selectedTime: string | null = null;
   form: FormGroup;
   sucesso: boolean = false;
+  formSubmitted: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,7 +55,51 @@ export class AppointmentPageComponent {
     this.selectedTime = time;
   }
 
+  // Máscara para telefone
+  formatarTelefone(event: any) {
+    let valor = event.target.value.replace(/\D/g, '');
+
+    if (valor.length <= 10) {
+      // Para telefone fixo: (00) 0000-0000
+      valor = valor.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    } else {
+      // Para celular: (00) 00000-0000
+      valor = valor.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    }
+
+    this.form.patchValue({ client_phone: valor });
+  }
+
+  // Verificar se email é válido
+  isEmailInvalid(): boolean {
+    const emailControl = this.form.get('client_email');
+    return this.formSubmitted && !!emailControl?.errors;
+  }
+
+  // Verificar se horário foi selecionado
+  isTimeNotSelected(): boolean {
+    return !this.selectedTime && this.formSubmitted;
+  }
+
+  // Verificar se nome está vazio
+  isNameEmpty(): boolean {
+    const nameControl = this.form.get('client_name');
+    return this.formSubmitted && !!nameControl?.errors;
+  }
+
+  // Verificar se telefone está vazio
+  isPhoneEmpty(): boolean {
+    const phoneControl = this.form.get('client_phone');
+    return this.formSubmitted && !!phoneControl?.errors;
+  }
+
+  canCreate() {
+
+  }
+
   submit() {
+  this.formSubmitted = true;
+
   if (this.form.valid && this.selectedTime) {
     const agendamento = {
       client_name: this.form.value.client_name,
@@ -65,12 +110,13 @@ export class AppointmentPageComponent {
       service_type: this.procedure
     };
 
+    if (this.formSubmitted){
     this.loading = true; // inicia o loading
-
     this.agendamentoService.criarAgendamento(agendamento).subscribe({
       next: () => {
         this.sucesso = true;
         this.loading = false;
+        this.formSubmitted = false;
         setTimeout(() => { this.sucesso = false; }, 3500);
         this.form.reset();
         this.selectedTime = null;
@@ -81,6 +127,7 @@ export class AppointmentPageComponent {
         this.loading = false;
       }
     });
+  }
   }
 }
 

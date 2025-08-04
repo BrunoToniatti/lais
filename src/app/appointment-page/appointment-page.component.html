@@ -20,23 +20,42 @@
     </button>
   </div>
 
+  <div *ngIf="isTimeNotSelected()" class="error-message">
+    Por favor, selecione um horário
+  </div>
+
   <form [formGroup]="form" (ngSubmit)="submit()" class="formulario">
     <label>
       Nome:
       <input type="text" formControlName="client_name" />
+      <div *ngIf="isNameEmpty()" class="error-message">
+        Nome é obrigatório
+      </div>
     </label>
 
     <label>
       E-mail:
       <input type="email" formControlName="client_email" />
+      <div *ngIf="isEmailInvalid()" class="error-message">
+        Email precisa ser válido, ex: joao&#64;exemplo.com
+      </div>
     </label>
 
     <label>
       Telefone:
-      <input type="tel" formControlName="client_phone" />
+      <input
+        type="tel"
+        formControlName="client_phone"
+        (input)="formatarTelefone($event)"
+        placeholder="(00) 00000-0000"
+        maxlength="15"
+      />
+      <div *ngIf="isPhoneEmpty()" class="error-message">
+        Telefone é obrigatório
+      </div>
     </label>
 
-    <button type="submit" [disabled]="!form.valid || !selectedTime">
+    <button type="submit">
       Confirmar Agendamento
     </button>
   </form>
