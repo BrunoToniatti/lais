@@ -1,0 +1,408 @@
+.success-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 50%, #fce7f3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+
+  .success-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 25px 50px rgba(204, 46, 115, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 10;
+    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1), glow 3s ease-in-out infinite alternate;
+
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+      margin: 1rem;
+    }
+  }
+
+  .confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      animation: confettiFall 3s linear infinite;
+      border-radius: 2px;
+    }
+  }
+
+  .success-icon {
+    margin-bottom: 2rem;
+    animation: bounceIn 1s ease 0.3s both;
+
+    .checkmark-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #cc2e73 0%, #e91e63 100%);
+      margin: 0 auto;
+      position: relative;
+      animation: pulse 2s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(204, 46, 115, 0.3);
+
+      @media (max-width: 768px) {
+        width: 80px;
+        height: 80px;
+      }
+
+      .checkmark-svg {
+        width: 60px;
+        height: 60px;
+
+        @media (max-width: 768px) {
+          width: 50px;
+          height: 50px;
+        }
+
+        .checkmark-circle-bg {
+          stroke: white;
+          stroke-width: 3;
+          stroke-miterlimit: 10;
+          fill: none;
+        }
+
+        .checkmark-check {
+          stroke: white;
+          stroke-width: 4;
+          stroke-linecap: round;
+          stroke-miterlimit: 10;
+          fill: none;
+          stroke-dasharray: 50;
+          stroke-dashoffset: 50;
+          animation: drawCheck 0.8s ease 0.5s both;
+        }
+      }
+    }
+  }
+
+  .success-text {
+    margin-bottom: 2.5rem;
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #cc2e73 0%, #e91e63 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: slideInDown 0.8s ease 0.4s both;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+      animation: slideInDown 0.8s ease 0.6s both;
+
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+      }
+    }
+
+    .details {
+      .detail-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        animation: slideInLeft 0.6s ease both;
+
+        &:nth-child(1) { animation-delay: 0.8s; }
+        &:nth-child(2) { animation-delay: 1s; }
+        &:nth-child(3) { animation-delay: 1.2s; }
+
+        .icon {
+          font-size: 1.5rem;
+          animation: bounce 2s infinite;
+        }
+
+        .text {
+          color: #4b5563;
+          font-weight: 500;
+
+          @media (max-width: 768px) {
+            font-size: 0.9rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    animation: slideInUp 0.8s ease 1.4s both;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn-primary, .btn-secondary {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+
+      @media (max-width: 768px) {
+        padding: 1.2rem 2rem;
+        justify-content: center;
+      }
+
+      .btn-icon {
+        font-size: 1.2rem;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active {
+        transform: translateY(-1px);
+      }
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #cc2e73 0%, #e91e63 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(204, 46, 115, 0.3);
+
+      &:hover {
+        box-shadow: 0 8px 25px rgba(204, 46, 115, 0.4);
+      }
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #cc2e73;
+      border: 2px solid #cc2e73;
+
+      &:hover {
+        background: #cc2e73;
+        color: white;
+      }
+    }
+  }
+
+  .thank-you {
+    animation: fadeIn 1s ease 1.6s both;
+
+    p {
+      color: #9ca3af;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+  }
+
+  .bg-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+
+    .floating-heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp 4s linear infinite;
+      opacity: 0.7;
+    }
+
+    .sparkle {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: sparkleAnimation 3s ease-in-out infinite;
+      opacity: 0;
+      z-index: 1;
+    }
+  }
+}
+
+// Animações
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes drawCheck {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkleAnimation {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 25px 50px rgba(204, 46, 115, 0.15);
+  }
+  to {
+    box-shadow: 0 25px 50px rgba(204, 46, 115, 0.25), 0 0 30px rgba(204, 46, 115, 0.1);
+  }
+}

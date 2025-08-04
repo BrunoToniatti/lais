@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from "../first-page/components/header/header.component";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AgendamentoService } from '../services/agendamento.service';
@@ -29,6 +29,7 @@ export class AppointmentPageComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private agendamentoService: AgendamentoService
   ) {
@@ -114,12 +115,10 @@ export class AppointmentPageComponent {
     this.loading = true; // inicia o loading
     this.agendamentoService.criarAgendamento(agendamento).subscribe({
       next: () => {
-        this.sucesso = true;
         this.loading = false;
         this.formSubmitted = false;
-        setTimeout(() => { this.sucesso = false; }, 3500);
-        this.form.reset();
-        this.selectedTime = null;
+        // Redirecionar para a página de sucesso
+        this.router.navigate(['/success']);
       },
       error: (err) => {
         console.error('Erro ao agendar:', err);

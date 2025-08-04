@@ -1,41 +1,42 @@
 <header class="navbar">
   <div class="container">
-    <div class="logo">
+    <div class="logo" (click)="home()">
       <h1>Lais Ribeiro</h1>
     </div>
 
-    <div class="hamburger" (click)="toggleMenu()">☰</div>
+    <button class="hamburger" [class.active]="menuAtivo" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <nav class="menu" [class.active]="menuAtivo">
       @if(where === 'first-page') {
       <ul>
         <li><a href="#" (click)="scrollToSection($event, 'sobre-mim')">Sobre Mim</a></li>
-        <li class="dropdown" (click)="!isDesktop && toggleSubmenu($event)" [class.open]="submenuAtivo && !isDesktop">
+        <li class="dropdown" [class.open]="submenuAtivo" (click)="!isDesktop && toggleSubmenu($event)">
           <a href="#">Serviços</a>
-          <ul class="dropdown-menu" [class.active]="submenuAtivo || isDesktop">
-            <li class="dropdown-category">
+          <div class="dropdown-menu" [class.active]="submenuAtivo || isDesktop">
+            <div class="dropdown-category">
               <span class="category-title">Cílios</span>
               <ul>
                 <li><a href="#" (click)="scrollToSection($event, 'aplication-c')">Aplicação</a></li>
                 <li><a href="#" (click)="scrollToSection($event, 'manutencion')">Manutenção</a></li>
                 <li><a href="#" (click)="scrollToSection($event, 'remove')">Remoção</a></li>
               </ul>
-            </li>
-            <li class="dropdown-category">
+            </div>
+            <div class="dropdown-category">
               <span class="category-title">Piercing Dental</span>
               <ul>
                 <li><a href="#" (click)="scrollToSection($event, 'aplication-d')">Aplicação</a></li>
               </ul>
-            </li>
-          </ul>
+            </div>
+          </div>
         </li>
-
         <li><a href="#" (click)="scrollToSection($event, 'price-table')">Tabela de Preços</a></li>
         <li>
-          <button (click)="agende()">Agende Agora</button>
+          <button class="cta-button" (click)="agende()">Agende Agora</button>
         </li>
-        <!-- <li><a href="#">Feedbacks</a></li> -->
-        <!-- <li><a href="#">Contatos</a></li> -->
       </ul>
       }@else if(where == 'admin-painel'){
       <ul>
@@ -44,7 +45,9 @@
         <li><a href="#" (click)="navegar('clientes')">👥 Clientes</a></li>
         <li><a href="#" (click)="navegar('procedimentos')">💅 Procedimentos</a></li>
         <li><a href="#" (click)="navegar('relatorios')">📊 Relatórios</a></li>
-        <li><button (click)="logout()">🚪 Sair</button></li>
+        <li>
+          <button class="cta-button" (click)="logout()">🚪 Sair</button>
+        </li>
       </ul>
       }@else{
       <ul>
@@ -53,5 +56,4 @@
       }
     </nav>
   </div>
-
 </header>

@@ -1,0 +1,75 @@
+<div class="success-container">
+  <div class="success-content">
+    <!-- Animação de confete -->
+    <div class="confetti">
+      <div class="confetti-piece" *ngFor="let piece of confettiPieces; let i = index"
+           [style.animation-delay.s]="i * 0.1"
+           [style.left.%]="piece.left"
+           [style.background]="piece.color">
+      </div>
+    </div>
+
+    <!-- Ícone de sucesso animado -->
+    <div class="success-icon">
+      <div class="checkmark-circle">
+        <svg class="checkmark-svg" viewBox="0 0 52 52">
+          <circle class="checkmark-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-check" fill="none" d="m14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="success-text">
+      <h1 class="title">Agendamento Realizado!</h1>
+      <p class="subtitle">Seu agendamento foi confirmado com sucesso</p>
+
+      <div class="details">
+        <div class="detail-item">
+          <span class="icon">📅</span>
+          <span class="text">Você receberá uma confirmação em breve</span>
+        </div>
+        <div class="detail-item">
+          <span class="icon">💅</span>
+          <span class="text">Prepare-se para ficar ainda mais linda!</span>
+        </div>
+        <div class="detail-item">
+          <span class="icon">⭐</span>
+          <span class="text">Estamos ansiosas para te atender</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="action-buttons">
+      <button class="btn-primary" (click)="goToHome()">
+        <span class="btn-icon">🏠</span>
+        Voltar ao Início
+      </button>
+      <button class="btn-secondary" (click)="scheduleAnother()">
+        <span class="btn-icon">➕</span>
+        Agendar Outro
+      </button>
+    </div>
+
+    <!-- Mensagem de agradecimento -->
+    <div class="thank-you">
+      <p>Obrigada por escolher nossos serviços! ✨</p>
+    </div>
+  </div>
+
+  <!-- Elementos decorativos de fundo -->
+  <div class="bg-decoration">
+    <div class="floating-heart" *ngFor="let heart of floatingHearts; let i = index"
+         [style.animation-delay.s]="i * 2"
+         [style.left.%]="heart.left">
+      💕
+    </div>
+
+    <!-- Sparkles extras -->
+    <div class="sparkle" style="top: 20%; left: 10%; animation-delay: 0.5s;">✨</div>
+    <div class="sparkle" style="top: 30%; right: 15%; animation-delay: 1.2s;">⭐</div>
+    <div class="sparkle" style="bottom: 25%; left: 20%; animation-delay: 2s;">💫</div>
+    <div class="sparkle" style="bottom: 40%; right: 10%; animation-delay: 0.8s;">🌟</div>
+  </div>
+</div>

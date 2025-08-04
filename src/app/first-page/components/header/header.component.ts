@@ -19,10 +19,10 @@ export class HeaderComponent {
   constructor(private router: Router) {} // 👈 INJETA O ROUTER
 
   agende() {
+    this.menuAtivo = false;
+    this.submenuAtivo = false;
     this.router.navigate(['/calendar']);
-  }
-
-  logout() {
+  }  logout() {
     // Aqui você limpa login futuro se tiver auth
     this.router.navigate(['/admin']);
   }
@@ -47,14 +47,34 @@ export class HeaderComponent {
       event.stopPropagation();
       this.submenuAtivo = !this.submenuAtivo;
     }
-  }
-
-  @HostListener('window:resize')
+  }  @HostListener('window:resize')
   onResize() {
     if (typeof window !== 'undefined') {
       this.isDesktop = window.innerWidth > 768;
       if (this.isDesktop) {
         this.submenuAtivo = false;
+        this.menuAtivo = false;
+
+        // Restaurar scroll do body quando mudar para desktop
+        if (typeof document !== 'undefined') {
+          document.body.style.overflow = '';
+        }
+      }
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    const navbar = target.closest('.navbar');
+
+    if (!navbar && this.menuAtivo) {
+      this.menuAtivo = false;
+      this.submenuAtivo = false;
+
+      // Restaurar scroll do body
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = '';
       }
     }
   }
@@ -69,9 +89,23 @@ export class HeaderComponent {
     event.preventDefault();
     const el = document.getElementById(sectionId);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      // Fechar menu com animação suave
       this.menuAtivo = false;
       this.submenuAtivo = false;
+
+      // Restaurar scroll do body
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = '';
+      }
+
+      // Aguardar um pouco para a animação do menu antes de fazer scroll
+      setTimeout(() => {
+        el.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      }, 150);
     }
   }
 }
