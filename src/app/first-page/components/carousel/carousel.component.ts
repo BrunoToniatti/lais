@@ -15,11 +15,6 @@ export class CarouselComponent implements OnInit, OnDestroy {
       title: 'Extensão de Cílios',
       type: 'aplication-c'
     },
-    {
-      image: 'assets/smile.jpg',
-      title: 'Piercing no Dente',
-      type: 'aplication-d'
-    }
   ];
 
   constructor(private ngZone: NgZone) { }
