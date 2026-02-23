@@ -1,17 +1,18 @@
+@import '../../../../../../styles/_variables.scss';
 .aplicacao-section {
   padding: 4rem 2rem;
-  background: #fff0f5;
+  background: linear-gradient(90deg, $secondary-color-light 60%, $secondary-color 100%);
   text-align: center;
 
   h2 {
     font-size: 2.5rem;
-    color: #c2185b;
+    color: $primary-color;
     margin-bottom: 0.5rem;
   }
 
   .subtext {
     font-size: 1.1rem;
-    color: #666;
+    color: $text-color;
     margin-bottom: 2rem;
   }
 
@@ -24,10 +25,10 @@
   }
 
   .aplicacao-card {
-    background: white;
+    background: $secondary-color-light;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 20px rgba(197, 162, 69, 0.08);
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
@@ -48,14 +49,14 @@
 
     h3 {
       font-size: 1.3rem;
-      color: #c2185b;
+      color: $primary-color-dark;
       margin: 1rem 0 0.5rem;
       font-family: 'Poppins', sans-serif;
     }
 
     .valor {
       font-weight: bold;
-      color: #e91e63;
+      color: $primary-color;
       margin-bottom: 1rem;
       font-family: 'Poppins', sans-serif;
     }
@@ -63,20 +64,20 @@
     .agendar-btn {
       display: inline-block;
       margin-bottom: 1rem;
-      background-color: #ffe4ec;
-      color: #c2185b;
+      background-color: $primary-color;
+      color: $secondary-color-dark;
       padding: 0.5rem 1.5rem;
       border-radius: 9999px;
       text-decoration: none;
       font-weight: 600;
       font-family: 'Poppins', sans-serif;
-      border: 1.5px solid #e91e63;
+      border: 1.5px solid $primary-color-dark;
       transition: background 0.3s, color 0.3s, border 0.3s;
 
       &:hover {
-        background-color: #e91e63;
-        color: #fff;
-        border: 1.5px solid #e91e63;
+        background-color: $accent-color;
+        color: $primary-color-dark;
+        border: 1.5px solid $accent-color;
       }
     }
   }
