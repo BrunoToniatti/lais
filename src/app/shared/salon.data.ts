@@ -60,7 +60,7 @@ export const CARE_SERVICES: ServiceItem[] = [
     id: 'remove',
     title: 'Remoção de Cílios',
     img: 'assets/cilios/remocao.png',
-    price: 40,
+    price: 35,
     description:
       'Remoção segura, indolor e sem danificar os cílios naturais. Evite puxar ou tentar remover sozinha: isso pode causar danos aos seus olhos.',
     cta: 'Agendar remoção',
@@ -69,6 +69,7 @@ export const CARE_SERVICES: ServiceItem[] = [
 ];
 
 export const PACKAGES: PackageItem[] = [
-  { name: 'Pacote manutenção', price: 62 },
-  { name: 'Pacote cílios', price: 125, featured: true },
+  { name: 'Aplicação', price: 125 },
+  { name: '1º manutenção', price: 62 },
+  { name: '2º manutenção', price: 62 },
 ];

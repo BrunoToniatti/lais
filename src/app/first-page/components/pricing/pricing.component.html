@@ -20,7 +20,7 @@
 
       <div class="pricing__side">
         <article class="panel" appReveal="120">
-          <header><h3>Pacotes</h3></header>
+          <header><h3>Pacote</h3></header>
           <ul>
             @for (p of packages; track p.name) {
               <li [class.is-featured]="p.featured">
@@ -31,11 +31,9 @@
         </article>
 
         <article class="panel" appReveal="240">
-          <header><h3>Cuidados</h3></header>
+          <header><h3>Sombrancelha</h3></header>
           <ul>
-            @for (c of care; track c.id) {
-              <li><span>{{ c.title }}</span><i></i><strong>{{ price(c.price) }}</strong></li>
-            }
+              <li><span>Limpeza sem design</span><i></i><strong>20</strong></li>
           </ul>
         </article>
       </div>
