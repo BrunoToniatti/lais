@@ -86,11 +86,24 @@
     justify-content: center;
   }
 
-  &__frame {
+  &__figure {
+    position: relative;
     width: min(100%, 360px);
-    margin-inline: auto;
+
+    // moldura dourada deslocada, atrás da foto
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 1.2rem -1.2rem -1.2rem 1.2rem;
+      border: 1.5px solid var(--gold);
+      border-radius: 999px 999px var(--radius) var(--radius);
+    }
+  }
+
+  &__frame {
+    position: relative;
     aspect-ratio: 960 / 1639;
-    border-radius: var(--radius);
+    border-radius: 999px 999px var(--radius) var(--radius);
     overflow: hidden;
     border: 8px solid #fff;
     box-shadow: var(--shadow-soft);
@@ -106,7 +119,7 @@
   &__badge {
     position: absolute;
     left: -1.6rem;
-    bottom: 2.2rem;
+    bottom: 3rem;
     display: flex;
     flex-direction: column;
     padding: 1.1rem 1.5rem;
@@ -179,8 +192,9 @@
       width: 100%;
     }
 
-    &__frame {
+    &__figure {
       width: min(100%, 300px);
+      margin-right: 1.2rem;
     }
 
     &__badge {
