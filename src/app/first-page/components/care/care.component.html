@@ -16,7 +16,14 @@
             <p appReveal="150">{{ item.description }}</p>
             <div class="row__buy" appReveal="250">
               <span class="row__price">{{ price(item.price) }}</span>
-              <a class="btn btn--gold" [href]="link(item)" target="_blank" rel="noopener">{{ item.cta }}</a>
+              <a
+                class="btn btn--gold"
+                data-track="whatsapp_click"
+                data-track-location="care"
+                [attr.data-track-service-type]="item.id"
+                [attr.data-track-service-name]="item.title"
+                [attr.data-track-price]="item.price"
+                [href]="link(item)" target="_blank" rel="noopener">{{ item.cta }}</a>
             </div>
           </div>
         </article>

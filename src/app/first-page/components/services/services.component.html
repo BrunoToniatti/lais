@@ -16,7 +16,15 @@
           <div class="card__body">
             <h3>{{ style.name }}</h3>
             
-            <a class="btn btn--ghost btn--sm" [href]="link(style)" target="_blank" rel="noopener">Agendar este estilo</a>
+            <a
+              class="btn btn--ghost btn--sm"
+              data-track="whatsapp_click"
+              data-track-location="services"
+              data-track-service-type="extensao_cilios"
+              [attr.data-track-service-name]="style.name"
+              [attr.data-track-price]="style.price"
+              [attr.data-track-position]="i + 1"
+              [href]="link(style)" target="_blank" rel="noopener">Agendar este estilo</a>
           </div>
         </article>
       }

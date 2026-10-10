@@ -1,6 +1,6 @@
 <header class="header" [class.header--solid]="scrolled || menuOpen">
   <div class="container header__bar">
-    <a class="brand" href="#inicio" (click)="go('inicio', $event)" aria-label="Lais Ribeiro, ir para o início">
+    <a class="brand" href="#inicio" data-track="nav_click" data-track-location="header_logo" data-track-target="inicio" (click)="go('inicio', $event)" aria-label="Lais Ribeiro, ir para o início">
       <span class="brand__name">Lais Ribeiro</span>
       <span class="brand__role">Lash Designer</span>
     </a>
@@ -11,6 +11,9 @@
           <li>
             <a
               [href]="'#' + link.id"
+              data-track="nav_click"
+              data-track-location="header"
+              [attr.data-track-target]="link.id"
               [class.is-active]="active === link.id"
               (click)="go(link.id, $event)"
               >{{ link.label }}</a
@@ -18,7 +21,7 @@
           </li>
         }
       </ul>
-      <a class="btn btn--gold btn--sm nav__cta" [href]="whatsapp" target="_blank" rel="noopener">Agendar horário</a>
+      <a class="btn btn--gold btn--sm nav__cta" data-track="whatsapp_click" data-track-location="header_cta" data-track-service-name="geral" [href]="whatsapp" target="_blank" rel="noopener">Agendar horário</a>
     </nav>
 
     <button
@@ -27,6 +30,8 @@
       [class.burger--open]="menuOpen"
       [attr.aria-expanded]="menuOpen"
       aria-label="Abrir menu"
+      data-track="menu_toggle"
+      [attr.data-track-action]="menuOpen ? 'close' : 'open'"
       (click)="toggleMenu()"
     >
       <span></span><span></span>

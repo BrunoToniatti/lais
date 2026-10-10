@@ -7,20 +7,20 @@
 
     <nav aria-label="Rodapé">
       <h4>Navegar</h4>
-      <a href="#sobre-mim" (click)="scroller.scrollTo('sobre-mim', $event)">Sobre mim</a>
-      <a href="#servicos" (click)="scroller.scrollTo('servicos', $event)">Estilos</a>
-      <a href="#valores" (click)="scroller.scrollTo('valores', $event)">Valores</a>
+      <a data-track="nav_click" data-track-location="footer" data-track-target="sobre-mim" href="#sobre-mim" (click)="scroller.scrollTo('sobre-mim', $event)">Sobre mim</a>
+      <a data-track="nav_click" data-track-location="footer" data-track-target="servicos" href="#servicos" (click)="scroller.scrollTo('servicos', $event)">Estilos</a>
+      <a data-track="nav_click" data-track-location="footer" data-track-target="valores" href="#valores" (click)="scroller.scrollTo('valores', $event)">Valores</a>
     </nav>
 
     <div>
       <h4>Contato</h4>
-      <a [href]="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-      <a [href]="instagram" target="_blank" rel="noopener">Instagram</a>
+      <a data-track="whatsapp_click" data-track-location="footer" data-track-service-name="geral" [href]="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a data-track="instagram_click" data-track-location="footer" [href]="instagram" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
 
   <div class="container footer__copy">
     <p>© {{ currentYear }} Lais Barreto Ribeiro da Silva. Todos os direitos reservados.</p>
-    <a href="#inicio" (click)="scroller.scrollTo('inicio', $event)">Voltar ao topo</a>
+    <a data-track="back_to_top" data-track-location="footer" href="#inicio" (click)="scroller.scrollTo('inicio', $event)">Voltar ao topo</a>
   </div>
 </footer>
