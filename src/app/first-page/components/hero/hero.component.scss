@@ -82,11 +82,15 @@
 
   &__visual {
     position: relative;
+    display: flex;
+    justify-content: center;
   }
 
   &__frame {
-    aspect-ratio: 4 / 5;
-    border-radius: 999px 999px var(--radius) var(--radius);
+    width: min(100%, 460px);
+    margin-inline: auto;
+    aspect-ratio: 660 / 371;
+    border-radius: var(--radius);
     overflow: hidden;
     border: 8px solid #fff;
     box-shadow: var(--shadow-soft);
@@ -95,9 +99,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 38% center;
-      transform: scale(1.04);
-      animation: slowzoom 14s ease-in-out infinite alternate;
+      object-position: center;
     }
   }
 
@@ -174,8 +176,7 @@
 
     &__visual {
       order: -1;
-      max-width: 340px;
-      margin-inline: auto;
+      width: 100%;
     }
 
     &__badge {
