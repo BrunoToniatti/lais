@@ -1,0 +1,25 @@
+<section class="services section" id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>Extensão de cílios</span>
+      <h2 appReveal="100">Escolha o estilo que combina com você</h2>
+      <p appReveal="200">Todos os estilos com o mesmo valor. Escolha pelo efeito que mais combina com o seu olhar.</p>
+    </div>
+
+    <div class="services__grid">
+      @for (style of styles; track style.name; let i = $index) {
+        <article class="card" [appReveal]="(i % 3) * 120">
+          <div class="card__media">
+            <img [src]="style.img" [alt]="style.name" loading="lazy" />
+            <span class="card__price">{{ price(style.price) }}</span>
+          </div>
+          <div class="card__body">
+            <h3>{{ style.name }}</h3>
+            <p>{{ style.description }}</p>
+            <a class="btn btn--ghost btn--sm" [href]="link(style)" target="_blank" rel="noopener">Agendar este estilo</a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

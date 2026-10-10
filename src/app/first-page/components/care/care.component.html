@@ -1,0 +1,26 @@
+<section class="care section" id="cuidados">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>Manutenção e remoção</span>
+      <h2 appReveal="100">Cílios sempre impecáveis</h2>
+    </div>
+
+    <div class="care__list">
+      @for (item of items; track item.id; let i = $index) {
+        <article class="row" [id]="item.id" [class.row--flip]="i % 2 === 1">
+          <div class="row__image" appReveal>
+            <img [src]="item.img" [alt]="item.title" loading="lazy" />
+          </div>
+          <div class="row__text">
+            <h3 appReveal="100">{{ item.title }}</h3>
+            <p appReveal="150">{{ item.description }}</p>
+            <div class="row__buy" appReveal="250">
+              <span class="row__price">{{ price(item.price) }}</span>
+              <a class="btn btn--gold" [href]="link(item)" target="_blank" rel="noopener">{{ item.cta }}</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

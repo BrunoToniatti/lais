@@ -1,18 +1,25 @@
-<section class="about-section" id="sobre-mim">
-  <div class="about-content">
-    <div class="about-text">
-      <h2>Sobre Mim 💖</h2>
-      <p>
-        Olá! Meu nome é <strong>Lais Silva</strong>, sou lash designer e especialista em realçar a beleza do seu olhar.
-        Com anos de experiência e muito carinho em cada atendimento, ofereço um serviço personalizado, higiênico e com
-        resultados incríveis. ✨
-      </p>
-      <p>
-        Meu maior objetivo é que você se sinta linda, confiante e única em cada visita 💕
-      </p>
+<section class="about section" id="sobre-mim">
+  <div class="container about__grid">
+    <div class="about__photo" appReveal>
+      <img src="assets/lais-perfil.jpg" alt="Lais, lash designer" width="1200" height="1600" loading="lazy" />
+      <span class="about__tag">Lash Designer</span>
     </div>
-    <div class="about-photo">
-      <img src="assets/lais-perfil.jpg" alt="Lais Silva Lash Designer" />
+
+    <div class="about__text">
+      <span class="eyebrow" appReveal>Sobre mim</span>
+      <h2 appReveal="100">Cuidado em cada atendimento</h2>
+      <p appReveal="200">
+        Olá! Sou a <strong>Lais</strong>, lash designer e especialista em realçar a beleza do seu olhar. Com anos de
+        experiência e muito carinho em cada atendimento, ofereço um serviço personalizado, higiênico e com resultados
+        incríveis.
+      </p>
+      <p appReveal="250">Meu maior objetivo é que você se sinta linda, confiante e única em cada visita.</p>
+
+      <ul class="about__list">
+        @for (item of highlights; track item; let i = $index) {
+          <li [appReveal]="300 + i * 100">{{ item }}</li>
+        }
+      </ul>
     </div>
   </div>
 </section>

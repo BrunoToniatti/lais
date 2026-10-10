@@ -1,19 +1,26 @@
-<footer class="site-footer">
-  <div class="footer-content">
-    <h3>Lais Ribeiro</h3>
-    <p>Realçando sua beleza com amor e delicadeza 💖</p>
-
-    <ul class="footer-links">
-      <li><a href="#" (click)="scrollToSection($event, 'aplication-c')">Serviços</a></li>
-      <li><a href="#" (click)="scrollToSection($event, 'sobre-mim')">Sobre Mim</a></li>
-      <li><a href="https://wa.me/5511961006415" target="_blank">Contatos</a></li>
-    </ul>
-
-    <div class="footer-socials">
-      <a href="https://www.instagram.com/lalashdesignerr/" target="_blank">Instagram</a>
-      <a href="https://wa.me/5511961006415" target="_blank">WhatsApp</a>
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <h3>Lais Ribeiro</h3>
+      <p>Realçando sua beleza com amor e delicadeza.</p>
     </div>
 
-    <p class="footer-copy">© {{ currentYear }} Lais Barreto Ribeiro da Silva. Todos os direitos reservados.</p>
+    <nav aria-label="Rodapé">
+      <h4>Navegar</h4>
+      <a href="#sobre-mim" (click)="scroller.scrollTo('sobre-mim', $event)">Sobre mim</a>
+      <a href="#servicos" (click)="scroller.scrollTo('servicos', $event)">Estilos</a>
+      <a href="#valores" (click)="scroller.scrollTo('valores', $event)">Valores</a>
+    </nav>
+
+    <div>
+      <h4>Contato</h4>
+      <a [href]="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a [href]="instagram" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <div class="container footer__copy">
+    <p>© {{ currentYear }} Lais Barreto Ribeiro da Silva. Todos os direitos reservados.</p>
+    <a href="#inicio" (click)="scroller.scrollTo('inicio', $event)">Voltar ao topo</a>
   </div>
 </footer>

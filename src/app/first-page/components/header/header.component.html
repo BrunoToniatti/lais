@@ -1,43 +1,36 @@
-<header class="navbar">
-  <div class="container">
-    <div class="logo">
-      <h1>Lais Ribeiro</h1>
-    </div>
+<header class="header" [class.header--solid]="scrolled || menuOpen">
+  <div class="container header__bar">
+    <a class="brand" href="#inicio" (click)="go('inicio', $event)" aria-label="Lais Ribeiro, ir para o início">
+      <span class="brand__name">Lais Ribeiro</span>
+      <span class="brand__role">Lash Designer</span>
+    </a>
 
-    <div class="hamburger" (click)="toggleMenu()">☰</div>
-
-    <nav class="menu" [class.active]="menuAtivo">
+    <nav class="nav" [class.nav--open]="menuOpen" aria-label="Principal">
       <ul>
-        <li><a href="#" (click)="scrollToSection($event, 'sobre-mim')">Sobre Mim</a></li>
-        <li
-          class="dropdown"
-          (click)="!isDesktop && toggleSubmenu($event)"
-          [class.open]="submenuAtivo && !isDesktop"
-        >
-          <a href="#">Serviços</a>
-          <ul class="dropdown-menu" [class.active]="submenuAtivo || isDesktop">
-            <li class="dropdown-category">
-              <span class="category-title">Cílios</span>
-              <ul>
-                <li><a href="#" (click)="scrollToSection($event, 'aplication-c')">Aplicação</a></li>
-                <li><a href="#" (click)="scrollToSection($event, 'manutencion')">Manutenção</a></li>
-                <li><a href="#" (click)="scrollToSection($event, 'remove')">Remoção</a></li>
-              </ul>
-            </li>
-            <li class="dropdown-category">
-              <span class="category-title">Piercing Dental</span>
-              <ul>
-                <li><a href="#" (click)="scrollToSection($event, 'aplication-d')">Aplicação</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-
-        <li><a href="#" (click)="scrollToSection($event, 'price-table')">Tabela de Preços</a></li>
-        <!-- <li><a href="#">Feedbacks</a></li> -->
-        <!-- <li><a href="#">Contatos</a></li> -->
+        @for (link of links; track link.id) {
+          <li>
+            <a
+              [href]="'#' + link.id"
+              [class.is-active]="active === link.id"
+              (click)="go(link.id, $event)"
+              >{{ link.label }}</a
+            >
+          </li>
+        }
       </ul>
+      <a class="btn btn--gold btn--sm nav__cta" [href]="whatsapp" target="_blank" rel="noopener">Agendar horário</a>
     </nav>
-  </div>
 
+    <button
+      class="burger"
+      type="button"
+      [class.burger--open]="menuOpen"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Abrir menu"
+      (click)="toggleMenu()"
+    >
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="progress" [style.transform]="'scaleX(' + progress + ')'"></div>
 </header>

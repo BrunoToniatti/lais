@@ -1,0 +1,49 @@
+<section class="pricing section" id="valores">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>Tabela de valores</span>
+      <h2 appReveal="100">Transparência e qualidade em cada detalhe</h2>
+    </div>
+
+    <div class="pricing__grid">
+      <article class="panel panel--main" appReveal>
+        <header>
+          <h3>Extensão de cílios</h3>
+          <p class="panel__big"><small>todos os estilos</small>{{ price(styles[0].price) }}</p>
+        </header>
+        <ul>
+          @for (s of styles; track s.name) {
+            <li><span>{{ s.name }}</span><i></i><strong>{{ price(s.price) }}</strong></li>
+          }
+        </ul>
+      </article>
+
+      <div class="pricing__side">
+        <article class="panel" appReveal="120">
+          <header><h3>Pacotes</h3></header>
+          <ul>
+            @for (p of packages; track p.name) {
+              <li [class.is-featured]="p.featured">
+                <span>{{ p.name }}</span><i></i><strong>{{ price(p.price) }}</strong>
+              </li>
+            }
+          </ul>
+        </article>
+
+        <article class="panel" appReveal="240">
+          <header><h3>Cuidados</h3></header>
+          <ul>
+            @for (c of care; track c.id) {
+              <li><span>{{ c.title }}</span><i></i><strong>{{ price(c.price) }}</strong></li>
+            }
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="pricing__cta" appReveal>
+      <p>Pronta para o seu novo olhar?</p>
+      <a class="btn btn--gold" [href]="whatsapp" target="_blank" rel="noopener">Agendar meu horário</a>
+    </div>
+  </div>
+</section>

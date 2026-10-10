@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
+import { ScrollService } from '../../../shared/scroll.service';
+import { INSTAGRAM_URL, whatsappLink } from '../../../shared/salon.data';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-currentYear = new Date().getFullYear();
+  currentYear = new Date().getFullYear();
+  instagram = INSTAGRAM_URL;
+  whatsapp = whatsappLink();
 
-scrollToSection(event: Event, sectionId: string) {
-  event.preventDefault();
-  const el = document.getElementById(sectionId);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' });
-  }
-}
+  constructor(public scroller: ScrollService) {}
 }
