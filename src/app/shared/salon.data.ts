@@ -38,11 +38,12 @@ export interface PackageItem {
 
 export const LASH_STYLES: LashStyle[] = [
   { name: 'Volume Brasileiro', img: 'assets/cilios/brasileiro.png', price: 135, description: 'Fios em Y para um preenchimento cheio e natural.' },
-  { name: 'Volume Inglês', img: 'assets/cilios/ingles.jpg', price: 135, description: 'Volume elegante, com acabamento definido.' },
+  { name: 'Volume Inglês', img: 'assets/cilios/ingles.jpeg', price: 135, description: 'Volume elegante, com acabamento definido.' },
   { name: 'Volume Glamour', img: 'assets/cilios/glamour.png', price: 135, description: 'Densidade intensa para um olhar marcante.' },
-  { name: 'Volume Wispy', img: 'assets/cilios/wispy.png', price: 135, description: 'Pontas texturizadas e efeito esfumado.' },
-  { name: 'Estilo Fox Eyes', img: 'assets/cilios/fox.png', price: 135, description: 'Olhar alongado e sofisticado.' },
-  { name: 'Estilo Fio a Fio', img: 'assets/cilios/fioafio.png', price: 135, description: 'Leve e discreto, um fio para cada fio natural.' },
+  { name: 'Volume Wispy', img: 'assets/cilios/whispy.jpeg', price: 135, description: 'Pontas texturizadas e efeito esfumado.' },
+  { name: 'Estilo Fox Eyes Preto', img: 'assets/cilios/fox-preto.jpeg', price: 135, description: 'Olhar alongado e sofisticado.' },
+  { name: 'Estilo Fox Eyes Marrom', img: 'assets/cilios/fox-marrom.jpeg', price: 135, description: 'Leve e discreto, um fio para cada fio natural.' },
+  { name: 'Estilo Fio a Fio', img: 'assets/cilios/fio-a-fio.jpeg', price: 135, description: 'Leve e discreto, um fio para cada fio natural.' },
 ];
 
 export const CARE_SERVICES: ServiceItem[] = [
