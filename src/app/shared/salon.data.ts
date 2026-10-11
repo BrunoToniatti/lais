@@ -48,16 +48,6 @@ export const LASH_STYLES: LashStyle[] = [
 
 export const CARE_SERVICES: ServiceItem[] = [
   {
-    id: 'manutencion',
-    title: 'Manutenção de Cílios',
-    img: 'assets/cilios/manutencao.png',
-    price: 95,
-    description:
-      'Essencial para manter os cílios cheios e com o mesmo efeito da aplicação inicial. Indicada entre 15 e 20 dias após a aplicação, respeitando o crescimento natural dos fios.',
-    cta: 'Agendar manutenção',
-    message: 'Olá! Gostaria de agendar uma manutenção de cílios.',
-  },
-  {
     id: 'remove',
     title: 'Remoção de Cílios',
     img: 'assets/cilios/remocao.png',
