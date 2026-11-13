@@ -1,0 +1,129 @@
+// O contêiner não recebe cliques: só o cartão. Assim a página nunca fica travada.
+.promo {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: grid;
+  place-items: end center;
+  padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+
+  &__dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(58, 42, 8, 0.2);
+    animation: fade 0.5s ease both;
+  }
+
+  &__card {
+    position: relative;
+    display: grid;
+    width: min(100%, 420px);
+    max-height: min(86dvh, 640px); // nunca maior que a tela, mesmo no celular deitado
+    overflow: auto;
+    overscroll-behavior: contain;
+    color: var(--text);
+    background: var(--cream-soft);
+    border-radius: 24px;
+    box-shadow: 0 30px 70px -20px rgba(58, 42, 8, 0.6);
+    pointer-events: auto;
+    animation: enter 0.6s var(--ease) both;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 44px; // alvo de toque confortável
+    height: 44px;
+    color: var(--ink);
+    background: rgba(255, 251, 233, 0.92);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 6px 16px -8px rgba(58, 42, 8, 0.6);
+    transition: transform 0.3s var(--ease);
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  &__body {
+    display: grid;
+    gap: 0.8rem;
+    // espaço no topo para o botão de fechar não cobrir o título (com imagem, ele fica sobre a foto)
+    padding: 3.2rem 1.4rem 1.3rem;
+    text-align: center;
+
+    h2 {
+      font-size: clamp(1.5rem, 5vw, 1.9rem);
+      overflow-wrap: anywhere;
+    }
+
+    p {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__img + &__body {
+    padding-top: 1.5rem;
+  }
+
+  &__actions {
+    display: grid;
+    gap: 0.4rem;
+    justify-items: center;
+    margin-top: 0.4rem;
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  &__later {
+    min-height: 44px;
+    padding: 0 1rem;
+    color: var(--muted, #8a7541);
+    background: none;
+    border: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade { from { opacity: 0; } }
+
+// Computador: centralizado.
+@media (min-width: 768px) {
+  .promo {
+    place-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .promo__dim {
+    background: none; // no celular, sem escurecer: é um cartão que sobe, não uma tela cheia
+  }
+}

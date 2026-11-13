@@ -1,0 +1,56 @@
+@if (promo.current(); as c) {
+  <div class="promo" role="dialog" aria-modal="false" aria-labelledby="promo-title">
+    <!-- Escurece de leve, mas NÃO captura cliques nem rolagem: o site continua usável por trás. -->
+    <div class="promo__dim" aria-hidden="true"></div>
+
+    <article class="promo__card">
+      <button
+        type="button"
+        class="promo__close"
+        aria-label="Fechar"
+        data-track="modal_close"
+        data-track-method="button"
+        [attr.data-track-campaign-id]="c.id"
+        (click)="promo.close('button')"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+
+      @if (c.modal.image_url && promo.safeUrl(c.modal.image_url); as img) {
+        <img class="promo__img" [src]="img" alt="" loading="lazy" (error)="$any($event.target).hidden = true" />
+      }
+
+      <div class="promo__body">
+        <h2 id="promo-title">{{ c.modal.title }}</h2>
+        @if (c.modal.body) {
+          <p>{{ c.modal.body }}</p>
+        }
+
+        <div class="promo__actions">
+          @if (c.modal.cta_url && promo.safeUrl(c.modal.cta_url); as href) {
+            <a
+              class="btn btn--gold"
+              [href]="href"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="modal_cta_click"
+              [attr.data-track-campaign-id]="c.id"
+              (click)="promo.cta()"
+              >{{ c.modal.cta_label }}</a
+            >
+          }
+          <button
+            type="button"
+            class="promo__later"
+            data-track="modal_close"
+            data-track-method="dismiss"
+            [attr.data-track-campaign-id]="c.id"
+            (click)="promo.close('dismiss')"
+          >
+            Agora não
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+}
