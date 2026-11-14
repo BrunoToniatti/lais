@@ -1,5 +1,6 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID, computed, inject } from '@angular/core';
+import { CatalogService } from '../../../shared/catalog.service';
 import { ScrollService } from '../../../shared/scroll.service';
 import { whatsappLink } from '../../../shared/salon.data';
 
@@ -10,13 +11,17 @@ import { whatsappLink } from '../../../shared/salon.data';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  links = [
-    { id: 'inicio', label: 'Início' },
-    { id: 'sobre-mim', label: 'Sobre' },
-    { id: 'servicos', label: 'Estilos' },
-    { id: 'cuidados', label: 'Remoção' },
-    { id: 'valores', label: 'Valores' },
-  ];
+  private catalog = inject(CatalogService);
+
+  links = computed(() =>
+    [
+      { id: 'inicio', label: 'Início' },
+      { id: 'sobre-mim', label: 'Sobre' },
+      { id: 'servicos', label: 'Estilos' },
+      { id: 'cuidados', label: 'Remoção' },
+      { id: 'valores', label: 'Valores' },
+    ].filter((l) => l.id !== 'cuidados' || this.catalog.care().length > 0),
+  );
 
   menuOpen = false;
   scrolled = false;
@@ -42,7 +47,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (entries) => entries.forEach((e) => e.isIntersecting && (this.active = e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' },
     );
-    this.links.forEach(({ id }) => {
+    this.links().forEach(({ id }) => {
       const el = this.document.getElementById(id);
       if (el) this.observer!.observe(el);
     });

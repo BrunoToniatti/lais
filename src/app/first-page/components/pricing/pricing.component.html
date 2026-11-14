@@ -6,36 +6,31 @@
     </div>
 
     <div class="pricing__grid">
-      <article class="panel panel--main" appReveal>
-        <header>
-          <h3>Extensão de cílios</h3>
-          <p class="panel__big"><small>todos os estilos</small>{{ price(styles[0].price) }}</p>
-        </header>
-        <ul>
-          @for (s of styles; track s.name) {
-            <li><span>{{ s.name }}</span><i></i><strong>{{ price(s.price) }}</strong></li>
-          }
-        </ul>
-      </article>
-
-      <div class="pricing__side">
-        <article class="panel" appReveal="120">
-          <header><h3>Pacote</h3></header>
+      @if (headline(); as h) {
+        <article class="panel panel--main" appReveal>
+          <header>
+            <h3>Extensão de cílios</h3>
+            <p class="panel__big"><small>{{ h.label }}</small>{{ h.text }}</p>
+          </header>
           <ul>
-            @for (p of packages; track p.name) {
-              <li [class.is-featured]="p.featured">
-                <span>{{ p.name }}</span><i></i><strong>{{ price(p.price) }}</strong>
-              </li>
+            @for (s of styles(); track s.slug) {
+              <li><span>{{ s.name }}</span><i></i><strong>{{ price(s.price) }}</strong></li>
             }
           </ul>
         </article>
+      }
 
-        <article class="panel" appReveal="240">
-          <header><h3>Sombrancelha</h3></header>
-          <ul>
-              <li><span>Limpeza sem design</span><i></i><strong>{{ price(20) }}</strong></li>
-          </ul>
-        </article>
+      <div class="pricing__side">
+        @for (panel of panels(); track panel.title; let i = $index) {
+          <article class="panel" [appReveal]="120 * (i + 1)">
+            <header><h3>{{ panel.title }}</h3></header>
+            <ul>
+              @for (item of panel.items; track item.slug) {
+                <li><span>{{ item.name }}</span><i></i><strong>{{ price(item.price) }}</strong></li>
+              }
+            </ul>
+          </article>
+        }
       </div>
     </div>
 

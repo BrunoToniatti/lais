@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RevealDirective } from '../../../shared/reveal.directive';
-import { CARE_SERVICES, ServiceItem, formatPrice, whatsappLink } from '../../../shared/salon.data';
+import { CatalogItem, CatalogService } from '../../../shared/catalog.service';
+import { formatPrice, whatsappLink } from '../../../shared/salon.data';
 
 @Component({
   selector: 'app-care',
@@ -10,10 +11,10 @@ import { CARE_SERVICES, ServiceItem, formatPrice, whatsappLink } from '../../../
   styleUrl: './care.component.scss',
 })
 export class CareComponent {
-  items = CARE_SERVICES;
+  items = inject(CatalogService).care;
   price = formatPrice;
 
-  link(item: ServiceItem): string {
-    return whatsappLink(item.message);
+  link(item: CatalogItem): string {
+    return whatsappLink(`Olá! Gostaria de agendar ${item.name.toLowerCase()}.`);
   }
 }

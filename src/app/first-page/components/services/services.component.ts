@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RevealDirective } from '../../../shared/reveal.directive';
-import { LASH_STYLES, LashStyle, formatPrice, whatsappLink } from '../../../shared/salon.data';
+import { CatalogItem, CatalogService } from '../../../shared/catalog.service';
+import { formatPrice, whatsappLink } from '../../../shared/salon.data';
 
 @Component({
   selector: 'app-services',
@@ -10,10 +11,13 @@ import { LASH_STYLES, LashStyle, formatPrice, whatsappLink } from '../../../shar
   styleUrl: './services.component.scss',
 })
 export class ServicesComponent {
-  styles = LASH_STYLES;
+  private catalog = inject(CatalogService);
+  styles = this.catalog.lash;
   price = formatPrice;
+  /** O aviso "todos com o mesmo valor" só aparece enquanto for verdade. */
+  samePrice = computed(() => new Set(this.styles().map((s) => s.price)).size <= 1);
 
-  link(style: LashStyle): string {
+  link(style: CatalogItem): string {
     return whatsappLink(`Olá! Gostaria de agendar um cílios estilo ${style.name}.`);
   }
 }

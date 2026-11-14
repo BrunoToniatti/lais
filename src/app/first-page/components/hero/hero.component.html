@@ -17,16 +17,16 @@
         <a class="btn btn--ghost" data-track="nav_click" data-track-location="hero" data-track-target="valores" href="#valores" (click)="scroller.scrollTo('valores', $event)">Ver valores</a>
       </div>
 
-      <dl class="hero__prices" appReveal="400">
-        <div>
-          <dt>Extensão de cílios</dt>
-          <dd><small>aplicação</small> {{ lashPrice }}</dd>
-        </div>
-        <div>
-          <dt>Manutenção</dt>
-          <dd><small>por</small> {{ packagePrice }}</dd>
-        </div>
-      </dl>
+      @if (catalog.highlights().length) {
+        <dl class="hero__prices" appReveal="400">
+          @for (h of catalog.highlights(); track h.slug) {
+            <div>
+              <dt>{{ h.heroLabel || h.name }}</dt>
+              <dd>@if (h.prefix) {<small>{{ h.prefix }}</small>&nbsp;}{{ price(h.price) }}</dd>
+            </div>
+          }
+        </dl>
+      }
     </div>
 
     <div class="hero__visual" appReveal="200">

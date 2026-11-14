@@ -1,3 +1,4 @@
+@if (items().length) {
 <section class="care section" id="cuidados">
   <div class="container">
     <div class="section-head section-head--wide">
@@ -5,13 +6,13 @@
     </div>
 
     <div class="care__list">
-      @for (item of items; track item.id; let i = $index) {
-        <article class="row" [id]="item.id" [class.row--flip]="i % 2 === 1">
+      @for (item of items(); track item.slug; let i = $index) {
+        <article class="row" [id]="item.slug" [class.row--flip]="i % 2 === 1">
           <div class="row__image" appReveal>
-            <img [src]="item.img" [alt]="item.title" loading="lazy" />
+            @if (item.img) { <img [src]="item.img" [alt]="item.name" loading="lazy" /> }
           </div>
           <div class="row__text">
-            <h3 appReveal="100">{{ item.title }}</h3>
+            <h3 appReveal="100">{{ item.name }}</h3>
             <p appReveal="150">{{ item.description }}</p>
             <div class="row__buy" appReveal="250">
               <span class="row__price">{{ price(item.price) }}</span>
@@ -19,10 +20,10 @@
                 class="btn btn--gold"
                 data-track="whatsapp_click"
                 data-track-location="care"
-                [attr.data-track-service-type]="item.id"
-                [attr.data-track-service-name]="item.title"
+                data-track-service-type="care"
+                [attr.data-track-service-name]="item.name"
                 [attr.data-track-price]="item.price"
-                [href]="link(item)" target="_blank" rel="noopener">{{ item.cta }}</a>
+                [href]="link(item)" target="_blank" rel="noopener">Agendar</a>
             </div>
           </div>
         </article>
@@ -30,3 +31,4 @@
     </div>
   </div>
 </section>
+}

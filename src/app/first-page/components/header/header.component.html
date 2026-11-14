@@ -7,7 +7,7 @@
 
     <nav class="nav" [class.nav--open]="menuOpen" aria-label="Principal">
       <ul>
-        @for (link of links; track link.id) {
+        @for (link of links(); track link.id) {
           <li>
             <a
               [href]="'#' + link.id"
