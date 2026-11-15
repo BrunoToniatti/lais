@@ -6,6 +6,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { CareComponent } from './components/care/care.component';
 import { PricingComponent } from './components/pricing/pricing.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TickerComponent } from './components/ticker/ticker.component';
 import { PromoModalComponent } from './components/promo-modal/promo-modal.component';
 import { WhatsappFabComponent } from './components/whatsapp-fab/whatsapp-fab.component';
 
@@ -22,6 +23,7 @@ import { WhatsappFabComponent } from './components/whatsapp-fab/whatsapp-fab.com
     FooterComponent,
     WhatsappFabComponent,
     PromoModalComponent,
+    TickerComponent,
   ],
   templateUrl: './first-page.component.html',
   styleUrl: './first-page.component.scss',

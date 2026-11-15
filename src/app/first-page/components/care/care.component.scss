@@ -16,7 +16,7 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: clamp(1.5rem, 5vw, 4.5rem);
-  scroll-margin-top: var(--header-h);
+  scroll-margin-top: var(--top-offset);
 
   &--flip &__image {
     order: 2;

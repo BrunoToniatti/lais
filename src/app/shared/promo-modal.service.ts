@@ -2,6 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { AnalyticsService } from './analytics.service';
 import { PLATFORM_API_URL } from './platform.config';
+import { VisitorService } from './visitor.service';
 
 export interface PromoCampaign {
   id: number;
@@ -21,7 +22,6 @@ export interface PromoCampaign {
 
 type EventType = 'impression' | 'click' | 'close';
 
-const VISITOR_KEY = 'lais.vid';
 const DAY_MS = 24 * 60 * 60 * 1000;
 const FETCH_TIMEOUT_MS = 4000;
 
@@ -45,6 +45,7 @@ export class PromoModalService {
 
   constructor(
     private analytics: AnalyticsService,
+    private visitor: VisitorService,
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) platformId: object,
   ) {
@@ -191,11 +192,7 @@ export class PromoModalService {
   // ---- visitante anônimo (LGPD: só um identificador aleatório) -----------------
 
   private resolveVisitor(): { id: string; returning: boolean } {
-    const existing = this.read(localStorage, VISITOR_KEY);
-    if (existing) return { id: existing, returning: true };
-    const id = (crypto.randomUUID?.() ?? `${Date.now()}${Math.random().toString(16).slice(2)}`).replace(/[^A-Za-z0-9_-]/g, '');
-    this.write(localStorage, VISITOR_KEY, id);
-    return { id, returning: false };
+    return this.visitor.get();
   }
 
   private key(c: PromoCampaign): string {

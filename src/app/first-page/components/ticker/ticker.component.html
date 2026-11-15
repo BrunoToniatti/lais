@@ -1,0 +1,41 @@
+@if (ticker.current(); as t) {
+  <aside class="ticker" [class.ticker--dark]="t.theme === 'dark'" role="region" aria-label="Avisos" [style.--dur]="ticker.duration() + 's'">
+    <div class="ticker__viewport">
+      <div class="ticker__track">
+        @for (copy of range(ticker.copies()); track copy) {
+          <div class="ticker__group" [attr.aria-hidden]="copy > 0 ? 'true' : null">
+            @for (m of t.messages; track $index) {
+              @if (m.url) {
+                <a
+                  class="ticker__item ticker__item--link"
+                  [href]="m.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  [attr.tabindex]="copy > 0 ? -1 : null"
+                  data-track="ticker_click"
+                  [attr.data-track-campaign-id]="t.id"
+                  (click)="ticker.clicked()"
+                  >{{ m.text }}</a
+                >
+              } @else {
+                <span class="ticker__item">{{ m.text }}</span>
+              }
+              <span class="ticker__dot" aria-hidden="true">✦</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="ticker__close"
+      aria-label="Fechar aviso"
+      data-track="ticker_close"
+      [attr.data-track-campaign-id]="t.id"
+      (click)="ticker.dismiss()"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+    </button>
+  </aside>
+}

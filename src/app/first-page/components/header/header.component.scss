@@ -1,15 +1,27 @@
 .header {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: var(--ticker-h) 0 auto 0;
   z-index: 1000;
   height: var(--header-h);
-  transition: background 0.5s, box-shadow 0.5s, backdrop-filter 0.5s;
+  transition: top 0.5s var(--ease);
 
-  &--solid {
+  // O fundo desfocado fica num elemento à parte. Se o próprio .header tivesse backdrop-filter,
+  // ele viraria o referencial do menu do celular (position: fixed) e o menu abriria com 72px de altura.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background: rgba(255, 251, 233, 0.86);
     backdrop-filter: blur(14px) saturate(1.4);
     -webkit-backdrop-filter: blur(14px) saturate(1.4);
     box-shadow: 0 8px 30px -18px rgba(122, 92, 28, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  &--solid::before {
+    opacity: 1;
   }
 
   &__bar {

@@ -13,6 +13,8 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --shadow-soft: 0 18px 50px -20px rgba(122, 92, 28, 0.35);
   --header-h: 72px;
+  --ticker-h: 0px; // vira 40px quando o letreiro está visível
+  --top-offset: calc(var(--header-h) + var(--ticker-h));
 }
 
 *,

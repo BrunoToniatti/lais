@@ -6,13 +6,19 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 export class ScrollService {
   private readonly isBrowser: boolean;
   private frame = 0;
-  private readonly offset = 72;
+  private readonly baseOffset = 72;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) platformId: object,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  /** Menu fixo + letreiro (quando visível): a seção não pode ficar escondida atrás deles. */
+  private offset(win: Window): number {
+    const ticker = parseFloat(win.getComputedStyle(this.document.documentElement).getPropertyValue('--ticker-h'));
+    return this.baseOffset + (Number.isFinite(ticker) ? ticker : 0);
   }
 
   scrollTo(id: string, event?: Event): void {
@@ -24,7 +30,7 @@ export class ScrollService {
     if (!target || !win) return;
 
     const start = win.scrollY;
-    const end = id === 'inicio' ? 0 : target.getBoundingClientRect().top + start - this.offset;
+    const end = id === 'inicio' ? 0 : target.getBoundingClientRect().top + start - this.offset(win);
     const distance = end - start;
     const reduced = win.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

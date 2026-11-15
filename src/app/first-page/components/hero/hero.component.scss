@@ -3,7 +3,8 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: calc(var(--header-h) + 2rem) 0 4rem;
+  padding: calc(var(--top-offset) + 2rem) 0 4rem;
+  transition: padding-top 0.5s var(--ease);
   overflow: hidden;
   background:
     radial-gradient(60% 50% at 85% 20%, rgba(230, 201, 122, 0.45), transparent 70%),
